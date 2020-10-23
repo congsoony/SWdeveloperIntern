@@ -21,10 +21,7 @@ public class TodayServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TodayServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -38,7 +35,7 @@ public class TodayServlet extends HttpServlet {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
 		out.println("<html>");
 		out.println("<head><title>현재시간</title>");
-		out.println("<link rel=\"stylesheet\" href=\"today.css\">");
+		out.println("<link rel=\"stylesheet\" href=\"css/today.css\">");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<div class=\"layer\">");
