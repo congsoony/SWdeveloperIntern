@@ -1,0 +1,18 @@
+section{
+  max-width: 100%
+  width: auto;
+  margin: 30px;
+  height: auto;
+  background-color: white;
+  vertical-align: middle;
+}
+section2{
+  max-width: 80%;
+  width:auto;
+  position: relative;
+  left: 5%;
+}
+
+h1{
+  margin-bottom: 0px;
+}

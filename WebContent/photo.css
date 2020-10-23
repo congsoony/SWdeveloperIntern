@@ -1,0 +1,27 @@
+section{
+    max-width: 100%;
+    width: auto;
+    height: 1000px;
+    margin: 30px;
+    background-color: white;
+    vertical-align: middle;
+}
+insection {
+  display: flex;
+}
+
+.imgsize{
+  margin-left: 50px;
+  margin-top: 50px;
+  width:400px;
+  height:350px;
+  border: 10px solid gray;
+  margin-right: 50px;
+
+}
+
+p{
+  margin:50px;
+  font-size: 20px;
+  line-height: 40px;
+}
