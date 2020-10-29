@@ -1,0 +1,65 @@
+header>h1{
+  text-align: center;
+}
+section{
+  max-height: 100%;
+  height: auto;
+  width: 50%;
+  margin: auto;
+}
+footer{
+  max-height: 100%;
+  height: auto;
+  width: 50%;
+  margin: auto;
+  color: red;
+}
+.todoinput
+{
+  width: 50%;
+  height: 30px;
+}
+.nameinput{
+  width: 30%;
+  height: 30px;
+}
+.radio{
+  font-size: 50px;
+}
+div{
+  margin-top: 20px;
+}
+ul{
+  list-style-type: none;
+  padding: 0px;
+}
+li{
+  margin-right: 20px;
+  display: inline;
+}
+.clickbefore{
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  background-color: white;
+  float: left;
+}
+bsection{
+  float:right;
+}
+.clicksubmit{
+  margin-right: 50px;
+  width: 150px;
+  height: 30px;
+  color: white;
+  background-color:rgb(32,173,238);
+}
+
+.clickerase{
+  margin-right: 50px;
+  width: 1px;
+  width: 150px;
+  height: 30px;
+  color: white;
+  background-color:rgb(32,173,238);
+}
