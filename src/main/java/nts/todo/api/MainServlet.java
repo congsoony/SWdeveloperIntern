@@ -24,9 +24,10 @@ public class MainServlet extends HttpServlet {
 		List<TodoDto> doinglist=new ArrayList<>();
 		List<TodoDto> donelist=new ArrayList<>();
 		for(TodoDto item:list) {
-			if(item.getType()=="TODO")
+			System.out.println(item.getType());
+			if(item.getType().equals("TODO"))
 				todolist.add(item);
-			else if(item.getType()=="DOING")
+			else if(item.getType().equals("DOING"))
 				doinglist.add(item);
 			else
 				donelist.add(item);
@@ -34,7 +35,6 @@ public class MainServlet extends HttpServlet {
 		request.setAttribute("todolist",todolist);
 		request.setAttribute("doinglist",doinglist);
 		request.setAttribute("donelist",donelist);
-		
 		RequestDispatcher requestDispatcher= request.getRequestDispatcher("/main.jsp");
 		requestDispatcher.forward(request, response);
 		
