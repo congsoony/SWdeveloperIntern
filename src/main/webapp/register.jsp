@@ -28,7 +28,7 @@
       </ul>
     </section>
     <footer>
-      <button type="button" name="이전" class="clickbefore">< 이전</button>
+      <button type="button" name="이전" class="clickbefore">&lt 이전</button>
       <bsection>
 
         <button type="button" name="이전" class="clicksubmit">제출</button>
