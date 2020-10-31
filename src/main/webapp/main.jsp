@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -17,7 +18,14 @@
   <section>
     <list>
       <h2 class="firstline">TODO </h2>
-
+      <c:forEach items="${todolist }" var="item">
+       <h3 class="listclass">${item.title }
+        <p>등록날짜:${item.regDate },${dateString},우선순위${item.sequence }</p>
+        <button type="button" name="button" class="todoclick">→</button>
+      </h3>
+		</c:forEach>
+     
+      
     </list>
     <list>
       <h2 class="firstline">DOING </h2>
