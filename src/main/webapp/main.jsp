@@ -20,7 +20,7 @@
       <h2 class="firstline">TODO </h2>
       <c:forEach items="${todolist }" var="item">
        <h3 class="listclass">${item.title }
-        <p>등록날짜:${item.regDate },${dateString},우선순위${item.sequence }</p>
+        <p>등록날짜:${item.getRegDate()} , ${item.getName()},우선순위${item.getSequence() }</p>
         <button type="button" name="button" class="todoclick">→</button>
       </h3>
 		</c:forEach>
