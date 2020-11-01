@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import nts.todo.dto.TodoDto;
@@ -42,7 +44,7 @@ public class TodoDao {
 		}catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		String sql="select id, title, name, sequence, type, regdate from todo order by regdate desc";
+		String sql="select id, title, name, sequence, type, regdate from todo";
 		try(Connection conn=DriverManager.getConnection(dburl, dbUser, dbpasswd);
 				PreparedStatement ps=conn.prepareStatement(sql)){
 			try(ResultSet rs=ps.executeQuery(sql)){
@@ -53,6 +55,7 @@ public class TodoDao {
 					int sequence =rs.getInt("sequence");
 					String type=rs.getString("type");
 					String regdate=rs.getString("regdate");
+					regdate=DateFormat(regdate);
 					TodoDto dto=new TodoDto(id, name, regdate, sequence, title, type);
 					list.add(dto);
 				}
@@ -63,6 +66,18 @@ public class TodoDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	public String DateFormat(String regdate) {
+		SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat afterFormat=new SimpleDateFormat("yyyy.MM.dd");
+		Date tempDate=null;
+		try {
+			tempDate=beforeFormat.parse(regdate);
+			regdate=afterFormat.format(tempDate);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return regdate;
 	}
 	public int updateTodo(TodoDto todo) {
 		int updateCount=0;
