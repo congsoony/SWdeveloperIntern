@@ -30,14 +30,12 @@ public class MainServlet extends HttpServlet {
 			else if(item.getType().equals("DOING"))
 				doinglist.add(item);
 			else
-				donelist.add(item);
-			
+				donelist.add(item);	
 		}
 		request.setAttribute("todolist",todolist);
 		request.setAttribute("doinglist",doinglist);
 		request.setAttribute("donelist",donelist);
 		
-	
 		RequestDispatcher requestDispatcher= request.getRequestDispatcher("/main.jsp");
 		requestDispatcher.forward(request, response);
 		
