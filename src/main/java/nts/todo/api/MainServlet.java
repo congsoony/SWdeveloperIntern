@@ -19,8 +19,8 @@ public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		TodoDao dao=new TodoDao();
-		List<TodoDto> list=dao.getTodos();
+		TodoDao todoDao=new TodoDao();
+		List<TodoDto> list=todoDao.getTodos();
 		List<TodoDto> todolist=new ArrayList<>();
 		List<TodoDto> doinglist=new ArrayList<>();
 		List<TodoDto> donelist=new ArrayList<>();
