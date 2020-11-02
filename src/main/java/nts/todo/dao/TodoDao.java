@@ -18,7 +18,6 @@ public class TodoDao {
 	
 	public int addTodo(TodoDto todo) {
 		int insertCount = 0;
-
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {

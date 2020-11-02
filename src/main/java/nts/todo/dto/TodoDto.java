@@ -7,6 +7,9 @@ public class TodoDto {
 	private int sequence;
 	private String title;
 	private String type;
+	
+	public TodoDto() {
+	}
 	public TodoDto(long id, String name, String regDate, int sequence, String title, String type) {
 		super();
 		this.id = id;
