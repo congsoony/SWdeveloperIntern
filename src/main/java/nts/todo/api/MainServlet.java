@@ -18,29 +18,29 @@ import nts.todo.dto.TodoDto;
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		TodoDao dao=new TodoDao();
 		List<TodoDto> list=dao.getTodos();
 		List<TodoDto> todolist=new ArrayList<>();
 		List<TodoDto> doinglist=new ArrayList<>();
 		List<TodoDto> donelist=new ArrayList<>();
 		for(TodoDto item:list) {
-			System.out.println(item.getType());
-			if(item.getType().equals("TODO"))
+			if(item.getType().equals("TODO")) 
 				todolist.add(item);
 			else if(item.getType().equals("DOING"))
 				doinglist.add(item);
 			else
 				donelist.add(item);
+			
 		}
 		request.setAttribute("todolist",todolist);
 		request.setAttribute("doinglist",doinglist);
 		request.setAttribute("donelist",donelist);
+		
+	
 		RequestDispatcher requestDispatcher= request.getRequestDispatcher("/main.jsp");
 		requestDispatcher.forward(request, response);
 		
+		
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-
 }
