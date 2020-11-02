@@ -18,19 +18,19 @@
 
     <section>
 
-      <list>
+      <list class="TODO">
         <h2 class="firstline">TODO</h2>
         <c:forEach items="${todolist }" var="item">
         <article class="article_${item.getId()}">
           <h3 class="listclass">${item.title }
             <p>등록날짜:${item.getRegDate()} ,
               ${item.getName()},우선순위${item.getSequence() }</p>
-            <button type="button" onClick="Moving(${item.getId()},${item.getType()})" class="todoclick">→</button>
+            <button type="button" class="todoclick" onclick="Moving('${ item.getId() }', '${ item.getType() }');">→</button>
           </h3>
           </article>
         </c:forEach>   
       </list>
-      <list>
+      <list class="DOING">
         <h2 class="firstline">DOING</h2>
         
          <c:forEach items="${doinglist }" var="item">
@@ -38,25 +38,24 @@
           <h3 class="listclass">${item.title }
             <p>등록날짜:${item.getRegDate()} ,
               ${item.getName()},우선순위${item.getSequence() }</p>
-            <button type="button" onClick="Moving('${item.getId()}','${item.getType()}')" class="todoclick">→</button>
+            <button type="button" class="todoclick" onclick="Moving('${ item.getId() }', '${ item.getType() }');">→</button>
           </h3>
           </article>
         </c:forEach>
       </list>
-      <list>
+      <list class="DONE">
         <h2 class="firstline">DONE</h2>
-         <c:forEach items="${doinglist }" var="item">
+         <c:forEach items="${donelist }" var="item">
          <article class="article_${item.getId()}">
           <h3 class="listclass">${item.title }
             <p>등록날짜:${item.getRegDate()} ,
               ${item.getName()},우선순위${item.getSequence() }</p>
-            <button type="button" onClick="Moving(${item.getId()},${item.getType()})" class="todoclick">→</button>
+            
           </h3>
           </article>
         </c:forEach>
       </list>
     </section>
+    <script src="./js/main.js"></script>
 </body>
-<script src="./js/main.js"></script>
-
 </html>
