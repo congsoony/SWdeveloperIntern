@@ -17,28 +17,34 @@ import nts.todo.dto.TodoDto;
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		TodoDao todoDao = new TodoDao();
+		List<TodoDto> list = todoDao.getTodos();
+		List<TodoDto> todoList = new ArrayList<>();
+		List<TodoDto> doingList = new ArrayList<>();
+		List<TodoDto> doneList = new ArrayList<>();
 		
-		TodoDao todoDao=new TodoDao();
-		List<TodoDto> list=todoDao.getTodos();
-		List<TodoDto> todolist=new ArrayList<>();
-		List<TodoDto> doinglist=new ArrayList<>();
-		List<TodoDto> donelist=new ArrayList<>();
-		for(TodoDto item:list) {
-			if(item.getType().equals("TODO")) 
-				todolist.add(item);
-			else if(item.getType().equals("DOING"))
-				doinglist.add(item);
-			else
-				donelist.add(item);	
+		for (TodoDto item : list) {
+			if (item.getType().equals("TODO")) {
+				todoList.add(item);
+			}
+			else if (item.getType().equals("DOING")) {
+				doingList.add(item);
+			}
+			else {
+				doneList.add(item);
+			}
 		}
-		request.setAttribute("todolist",todolist);
-		request.setAttribute("doinglist",doinglist);
-		request.setAttribute("donelist",donelist);
 		
-		RequestDispatcher requestDispatcher= request.getRequestDispatcher("/main.jsp");
+		request.setAttribute("todolist", todoList);
+		request.setAttribute("doinglist", doingList);
+		request.setAttribute("donelist", doneList);
+
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main.jsp");
 		requestDispatcher.forward(request, response);
-		
-		
+
 	}
 }
