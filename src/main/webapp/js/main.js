@@ -3,7 +3,7 @@ el.addEventListener("click",function(){
 	location.href="register";
 });
 
-function Moving(id, type) {
+function moving(id, type) {
 	var article = document.querySelector(".article_" + id);
 	var nexttype;
 	var target=event.target;
@@ -26,7 +26,7 @@ function Moving(id, type) {
                 console.log(xhr.responseText);
                 var curlist=document.querySelector("."+nexttype);
              	curlist.append(article);
-             	target.setAttribute( 'onclick', "Moving('"+id+"','"+nexttype+"');");
+             	target.setAttribute( 'onclick', "moving('"+id+"','"+nexttype+"');");
              	if(nexttype=="DONE")
              		target.remove();
             	
