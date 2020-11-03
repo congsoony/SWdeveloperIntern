@@ -18,11 +18,15 @@ import nts.todo.dto.TodoDto;
 @WebServlet("/type")
 public class TodoTypeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsonString = request.getReader().lines().collect(Collectors.joining());//json형식으로 데이터를 가져옴
-		ObjectMapper objectMapper=new ObjectMapper();
-		TodoDao dao=new TodoDao();
-		TodoDto jsondto=objectMapper.readValue(jsonString, TodoDto.class);//string형인 json을 알맞는 객체에 값을 넣어줌 없는 값을 default임
+
+	@Override
+	protected void doPut(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String jsonString = request.getReader().lines().collect(Collectors.joining());// json형식으로 데이터를 가져옴
+		ObjectMapper objectMapper = new ObjectMapper();
+		TodoDao dao = new TodoDao();
+		TodoDto jsondto = objectMapper.readValue(jsonString, TodoDto.class);// string형인 json을 알맞는 객체에 값을 넣어줌 없는 값은
+																			// default임
 		dao.updateTodo(jsondto);
 	}
 
