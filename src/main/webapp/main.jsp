@@ -22,10 +22,10 @@
         <h2 class="firstline">TODO</h2>
         <c:forEach items="${todolist }" var="item">
         <article class="article_${item.getId()}">
-          <h3 class="listclass">${item.title }
+          <h3 class="listclass">${item.getTitle() }
             <p>등록날짜:${item.getRegDate()} ,
               ${item.getName()},우선순위${item.getSequence() }</p>
-            <button type="button" class="todoclick" onclick="Moving('${ item.getId() }', '${ item.getType() }');">→</button>
+            <button type="button" class="todoclick" onclick="moving('${ item.getId() }', '${ item.getType() }');">→</button>
           </h3>
           </article>
         </c:forEach>   
@@ -35,10 +35,10 @@
         
          <c:forEach items="${doinglist }" var="item">
           <article class="article_${item.getId()}">
-          <h3 class="listclass">${item.title }
+          <h3 class="listclass">${item.getTitle() }
             <p>등록날짜:${item.getRegDate()} ,
               ${item.getName()},우선순위${item.getSequence() }</p>
-            <button type="button" class="todoclick" onclick="Moving('${ item.getId() }', '${ item.getType() }');">→</button>
+            <button type="button" class="todoclick" onclick="moving('${ item.getId() }', '${ item.getType() }');">→</button>
           </h3>
           </article>
         </c:forEach>
@@ -47,7 +47,7 @@
         <h2 class="firstline">DONE</h2>
          <c:forEach items="${donelist }" var="item">
          <article class="article_${item.getId()}">
-          <h3 class="listclass">${item.title }
+          <h3 class="listclass">${item.getTitle() }
             <p>등록날짜:${item.getRegDate()} ,
               ${item.getName()},우선순위${item.getSequence() }</p>
             
