@@ -12,7 +12,7 @@
       <h1>할일 등록</h1>
     </header>
       <form class="" action="register" method="post">
-    <section>
+    <section class="mainsection">
     
       <div>어떤일인가요?</div>
       <input type="text" name="title" placeholder="swift 공부하기 (24자까지)" maxlength="24" class="todoinput" required>
@@ -29,11 +29,11 @@
     </section>
     <footer>
       <button type="button" class="clickbefore">&lt 이전</button>
-      <bsection>
+     <section class="nonesection">
 
         <button type="submit" class="clicksubmit">제출</button>
         <button type="reset" class="clickerase">내용지우기</button>
-      </bsection>
+      </section>
 
     </footer>
       </form>
