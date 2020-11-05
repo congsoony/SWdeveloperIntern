@@ -21,16 +21,15 @@
       <div>우선순위를 선택하세요</div>
 
       <ul>
-        <li><input type="radio" name="sequence" value="1순위" class="radio" required><label>1순위</label></li>
-        <li><input type="radio" name="sequence" value="2순위" class="radio" required><label>2순위</label></li>
-        <li><input type="radio" name="sequence" value="3순위" class="radio" required><label>3순위</label></li>
+        <li><input type="radio" name="sequence" value="1" class="radio" required><label>1순위</label></li>
+        <li><input type="radio" name="sequence" value="2" class="radio" required><label>2순위</label></li>
+        <li><input type="radio" name="sequence" value="3" class="radio" required><label>3순위</label></li>
       </ul>
     
     </section>
     <footer>
       <button type="button" class="clickbefore">&lt 이전</button>
      <section class="nonesection">
-
         <button type="submit" class="clicksubmit">제출</button>
         <button type="reset" class="clickerase">내용지우기</button>
       </section>

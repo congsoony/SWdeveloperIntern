@@ -25,12 +25,12 @@ public class RegisterServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		TodoDao dao = new TodoDao();
-		TodoDto dto = new TodoDto();
-		dto.setTitle(req.getParameter("title"));
-		dto.setName(req.getParameter("name"));
-		dto.setSequence(req.getParameter("sequence").charAt(0)-'0');
-		dao.addTodo(dto);
+		TodoDao todoDao = new TodoDao();
+		TodoDto todoDto = new TodoDto();
+		todoDto.setTitle(req.getParameter("title"));
+		todoDto.setName(req.getParameter("name"));
+		todoDto.setSequence(Integer.parseInt(req.getParameter("sequence")));
+		todoDao.addTodo(todoDto);
 		resp.sendRedirect("main");
 	}
 }
