@@ -30,11 +30,9 @@ public class MainServlet extends HttpServlet {
 		for (TodoDto item : list) {
 			if (item.getType().equals("TODO")) {
 				todoList.add(item);
-			}
-			else if (item.getType().equals("DOING")) {
+			}else if (item.getType().equals("DOING")) {
 				doingList.add(item);
-			}
-			else {
+			}else {
 				doneList.add(item);
 			}
 		}
