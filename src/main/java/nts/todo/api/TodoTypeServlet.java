@@ -25,9 +25,9 @@ public class TodoTypeServlet extends HttpServlet {
 		String stringJson = request.getReader().lines().collect(Collectors.joining());// json형식으로 데이터를 가져옴
 		ObjectMapper objectMapper = new ObjectMapper();
 		TodoDao todoDao = new TodoDao();
-		TodoDto todoDto_json = objectMapper.readValue(stringJson, TodoDto.class);// string형인 json을 알맞는 객체에 값을 넣어줌 없는 값은
+		TodoDto todoDtoJson = objectMapper.readValue(stringJson, TodoDto.class);// string형인 json을 알맞는 객체에 값을 넣어줌 없는 값은
 																			// default임
-		todoDao.updateTodo(todoDto_json);
+		todoDao.updateTodo(todoDtoJson);
 	}
 
 }
