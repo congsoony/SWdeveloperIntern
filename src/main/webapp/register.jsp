@@ -11,7 +11,7 @@
 	<header>
 		<h1>할일 등록</h1>
 	</header>
-	<form class="" action="register" method="post">
+	<form action="register" method="post">
 		<section class="mainsection">
 
 			<div>어떤일인가요?</div>
