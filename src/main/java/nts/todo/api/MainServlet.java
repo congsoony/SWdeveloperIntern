@@ -17,6 +17,7 @@ import nts.todo.dto.TodoDto;
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -26,17 +27,17 @@ public class MainServlet extends HttpServlet {
 		List<TodoDto> todoList = new ArrayList<>();
 		List<TodoDto> doingList = new ArrayList<>();
 		List<TodoDto> doneList = new ArrayList<>();
-		
+
 		for (TodoDto item : list) {
 			if (item.getType().equals("TODO")) {
 				todoList.add(item);
-			}else if (item.getType().equals("DOING")) {
+			} else if (item.getType().equals("DOING")) {
 				doingList.add(item);
-			}else {
+			} else {
 				doneList.add(item);
 			}
 		}
-		
+
 		request.setAttribute("todolist", todoList);
 		request.setAttribute("doinglist", doingList);
 		request.setAttribute("donelist", doneList);
