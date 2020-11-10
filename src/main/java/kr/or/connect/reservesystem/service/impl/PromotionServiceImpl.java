@@ -18,7 +18,7 @@ public class PromotionServiceImpl implements PromotionService {
 	@Override
 	@Transactional
 	public List<Promotion> getPromotions() {
-		// TODO Auto-generated method stub
+
 		List<Promotion> list = promotionDao.selectAll();
 		return list;
 	}
