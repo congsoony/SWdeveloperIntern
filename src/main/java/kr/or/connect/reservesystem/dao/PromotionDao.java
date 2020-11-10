@@ -14,6 +14,9 @@ import kr.or.connect.reservesystem.dto.Promotion;
 
 import static kr.or.connect.reservesystem.dao.PromotionDaoSqls.*;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class PromotionDao {
 	private RowMapper<Promotion> rowMapper = BeanPropertyRowMapper.newInstance(Promotion.class);
 	private NamedParameterJdbcTemplate jdbc;

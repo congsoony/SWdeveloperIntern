@@ -25,5 +25,5 @@ public class CategoryController {
 		map.put("items", list);
 		return map;
 	}
-
+	
 }
