@@ -53,6 +53,7 @@
 							<div class="container_visual">
 								<!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적으로 노출 -->
 								<ul class="visual_img">
+
 								</ul>
 							</div>
 							<span class="nxt_fix" style="display: none;"></span>
@@ -75,6 +76,7 @@
 					</a></li>
 					<li class="item" data-category="5"><a class="anchor"> <span>연극</span>
 					</a></li>
+
 					<!-- li class="item" data-category="7">
                         <a class="anchor"> <span>클래스</span> </a>
                     </li>
@@ -212,7 +214,7 @@
 
 
 	<script type="rv-template" id="promotionItem">
-    <li class="item" style="background-image: url(http://211.249.62.123/productImages/${productId}/${productImageId});">
+    <li class="item" style="background-image: url({productImageUrl});">
         <a href="#"> <span class="img_btm_border"></span> <span class="img_right_border"></span> <span class="img_bg_gra"></span>
             <div class="event_txt">
                 <h4 class="event_txt_tit"></h4>
@@ -237,6 +239,7 @@
             </a>
         </li>
     </script>
+	<script src="js/mainpage.js"></script>
 </body>
 
 </html>
