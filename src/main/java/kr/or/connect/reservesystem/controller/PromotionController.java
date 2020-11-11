@@ -13,7 +13,7 @@ import kr.or.connect.reservesystem.dto.Promotion;
 import kr.or.connect.reservesystem.service.PromotionService;
 
 @RestController
-@RequestMapping("api/promotions")
+@RequestMapping(path="/api/promotions")
 public class PromotionController {
 	@Autowired
 	PromotionService promotionService;
