@@ -17,7 +17,7 @@ public class CategoryServiceImpl implements CategoryService {
 	private CategoryDao categoryDao;
 
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Category> getCategories() {
 		List<Category> list = categoryDao.selectAll();
 		return list;
