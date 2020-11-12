@@ -51,7 +51,6 @@
 						</div>
 						<div>
 							<div class="container_visual">
-								<!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적으로 노출 -->
 								<ul class="visual_img">
 
 								</ul>
@@ -66,17 +65,6 @@
 					<li class="item" data-category="0"><a class="anchor active">
 							<span>전체리스트</span>
 					</a></li>
-					
-
-					<!-- li class="item" data-category="7">
-                        <a class="anchor"> <span>클래스</span> </a>
-                    </li>
-                    <li class="item" data-category="8">
-                        <a class="anchor"> <span>체험</span> </a>
-                    </li>
-                    <li class="item" data-category="9">
-                        <a class="anchor last"> <span>키즈</span> </a>
-                    </li -->
 				</ul>
 			</div>
 			<div class="section_event_lst">
@@ -84,14 +72,11 @@
 					바로 예매 가능한 행사가 <span class="pink">10개</span> 있습니다
 				</p>
 				<div class="wrap_event_box">
-					<!-- [D] lst_event_box 가 2컬럼으로 좌우로 나뉨, 더보기를 클릭할때마다 좌우 ul에 li가 추가됨 -->
+					<ul class="lst_event_box">
+					</ul>
 					<ul class="lst_event_box">
 
 					</ul>
-					<ul class="lst_event_box">
-						
-					</ul>
-					<!-- 더보기 -->
 					<div class="more">
 						<button class="btn">
 							<span>더보기</span>
@@ -112,6 +97,8 @@
 			<span class="copyright">© NAVER Corp.</span>
 		</div>
 	</footer>
+
+
 
 
 	<script type="rv-template" id="promotionItem">
@@ -141,6 +128,11 @@
         </li>
     </script>
 	<script src="js/mainpage.js"></script>
+	<script id="categoryId">
+		0
+	</script>
+	<script id="totalCount"></script>
+
 </body>
 
 </html>
