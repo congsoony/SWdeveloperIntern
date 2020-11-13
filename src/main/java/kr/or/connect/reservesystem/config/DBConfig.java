@@ -3,6 +3,7 @@ package kr.or.connect.reservesystem.config;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -13,22 +14,28 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({"classpath:/application.properties"})
-public class DBConfig implements TransactionManagementConfigurer{
-	private static final String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://10.113.116.52:13306/user21?useUnicode=true&characterEncoding=utf8";
-	private static final String USERNAME = "user21";
-	private static final String PASSWORD = "user21";
+@PropertySource({ "classpath:/application.properties" })
+public class DBConfig implements TransactionManagementConfigurer {
+
+	@Value("${spring.datasource.driver-class-name}")
+	private String driverClassName;
+	@Value("${spring.datasource.url}")
+	private String url;
+	@Value("${spring.datasource.username}")
+	private String userName;
+	@Value("${spring.datasource.password}")
+	private String passWord;
 
 	@Bean
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName(DRIVER_CLASS_NAME);
-		dataSource.setUrl(URL);
-		dataSource.setUsername(USERNAME);
-		dataSource.setPassword(PASSWORD);
+		dataSource.setDriverClassName(driverClassName);
+		dataSource.setUrl(url);
+		dataSource.setUsername(userName);
+		dataSource.setPassword(passWord);
 		return dataSource;
 	}
+
 	@Override
 	public PlatformTransactionManager annotationDrivenTransactionManager() {
 		return transactionManger();
@@ -38,4 +45,5 @@ public class DBConfig implements TransactionManagementConfigurer{
 	public PlatformTransactionManager transactionManger() {
 		return new DataSourceTransactionManager(dataSource());
 	}
+
 }
