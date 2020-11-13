@@ -128,6 +128,9 @@
         </li>
     </script>
 	<script src="js/mainpage.js"></script>
+	<script src="js/promotion.js"></script>
+	<script src="js/product.js"></script>
+	<script src="js/category.js"></script>
 	<script id="categoryId">
 		0
 	</script>
