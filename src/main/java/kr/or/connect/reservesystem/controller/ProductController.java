@@ -25,22 +25,21 @@ public class ProductController {
 	@GetMapping
 	public Map<String, Object> getCategories(@RequestParam(name = "categoryId", defaultValue = "0") int categoryId,
 			@RequestParam(name = "start", defaultValue = "0") int start) {
-	
+
 		Map<String, Object> map = new HashMap<>();
 		List<Product> list = null;
 		int totalCount = -1;
-		
+
 		if (categoryId > 0) {
-			list = productService.getSelectByCategoryId(start, categoryId);
-			totalCount = productService.getSelectCategoryCount(categoryId);
+			list = productService.getProductsList(start, categoryId);
+			totalCount = productService.getProductsTotalCount(categoryId);
 		} else {
-			list = productService.getSelectByAllCategory(start);
-			totalCount = productService.getSelectALLCategoryCount();
+			list = productService.getAllProductsList(start);
+			totalCount = productService.getALLProductsTotalCount();
 		}
 		
 		map.put("items", list);
 		map.put("totalCount", totalCount);
-		map.put("categoryId", categoryId);
 		
 		return map;
 	}

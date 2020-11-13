@@ -17,26 +17,26 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Product> getSelectByCategoryId(int start, int categoryId) {
-		return productDao.selectByCategoryId(start, categoryId);
+	public List<Product> getProductsList(int start, int categoryId) {
+		return productDao.getProductsList(start, categoryId);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public int getSelectCategoryCount(int categoryId) {
-		return productDao.selectCategoryCount(categoryId);
+	public int getProductsTotalCount(int categoryId) {
+		return productDao.getProductsTotalCount(categoryId);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Product> getSelectByAllCategory(int start) {
-		return productDao.selectByALLCategory(start);
+	public List<Product> getAllProductsList(int start) {
+		return productDao.getAllProductsList(start);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public int getSelectALLCategoryCount() {
-		return productDao.selectCategoryAllCount();
+	public int getALLProductsTotalCount() {
+		return productDao.getALLProductsTotalCount();
 	}
 
 }
