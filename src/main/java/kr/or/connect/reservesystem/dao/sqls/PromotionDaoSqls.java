@@ -1,4 +1,4 @@
-package kr.or.connect.reservesystem.dao;
+package kr.or.connect.reservesystem.dao.sqls;
 
 public class PromotionDaoSqls {
 	public static final String SELECT_ALL = "select a.id as id, b.id as product_id, e.save_file_name as product_image_url "

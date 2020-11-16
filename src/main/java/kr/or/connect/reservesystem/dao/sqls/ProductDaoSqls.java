@@ -1,4 +1,4 @@
-package kr.or.connect.reservesystem.dao;
+package kr.or.connect.reservesystem.dao.sqls;
 
 public class ProductDaoSqls {
 	public static final int LIMIT = 4;

@@ -1,5 +1,7 @@
 package kr.or.connect.reservesystem.dao;
 
+import static kr.or.connect.reservesystem.dao.sqls.CategoryDaoSqls.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +13,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import org.springframework.stereotype.Repository;
 import kr.or.connect.reservesystem.dto.Category;
-import static kr.or.connect.reservesystem.dao.CategoryDaoSqls.*;
 
 @Repository
 public class CategoryDao {

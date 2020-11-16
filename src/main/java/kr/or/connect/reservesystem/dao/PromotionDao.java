@@ -1,5 +1,7 @@
 package kr.or.connect.reservesystem.dao;
 
+import static kr.or.connect.reservesystem.dao.sqls.PromotionDaoSqls.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,8 +13,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import kr.or.connect.reservesystem.dto.Promotion;
-
-import static kr.or.connect.reservesystem.dao.PromotionDaoSqls.*;
 
 import org.springframework.stereotype.Repository;
 

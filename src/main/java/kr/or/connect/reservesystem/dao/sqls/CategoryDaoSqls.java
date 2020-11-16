@@ -1,4 +1,4 @@
-package kr.or.connect.reservesystem.dao;
+package kr.or.connect.reservesystem.dao.sqls;
 
 public class CategoryDaoSqls {
 	public static final String SELECT_ALL = "SELECT a.id as id, a.name as name,count(*) as count "
