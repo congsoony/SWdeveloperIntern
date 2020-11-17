@@ -21,12 +21,12 @@ public class PromotionController {
 
 	@GetMapping
 	public Map<String, Object> getPromotions() {
-		
+
 		Map<String, Object> map = new HashMap<>();
 		List<Promotion> list = promotionService.getPromotions();
-		
+
 		map.put("items", list);
-		
+
 		return map;
 	}
 

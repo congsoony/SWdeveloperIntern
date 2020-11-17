@@ -21,14 +21,14 @@ public class CategoryController {
 
 	@GetMapping
 	public Map<String, Object> getCategories() {
-		
+
 		Map<String, Object> map = new HashMap<>();
 		List<Category> list = categoryService.getCategories();
-		
+
 		map.put("items", list);
-		
+
 		return map;
-		
+
 	}
 
 }
