@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded",()=> {
 	getPromotions();
 	getProducts();
 	getCategories();
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function getData(url, fun) {
 	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function () {
+	xhr.onreadystatechange = ()=> {
 		if (xhr.readyState === xhr.DONE) {
 			if (xhr.status === 200 || xhr.status === 201) {
 				var jsonObj = JSON.parse(xhr.responseText);
@@ -23,7 +23,7 @@ function getData(url, fun) {
 
 function btnClickMore(categoryId){
 	var btn=document.querySelector(".btn");
-	btn.addEventListener('click',function(){
+	btn.addEventListener('click',()=>{
 		var productHtml= document.querySelector(".wrap_event_box");
 		var firstUl=productHtml.querySelector("ul:nth-child(1)");
 		var secondUl=productHtml.querySelector("ul:nth-child(2)");

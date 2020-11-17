@@ -19,7 +19,7 @@ function showCategoriesListener(){
 	var categoryList=document.querySelectorAll("ul.event_tab_lst.tab_lst_min li");
 	
 	categoryList.forEach((item)=>{
-		item.addEventListener('click',function(evt){
+		item.addEventListener('click',(evt)=>{
 			var categoryScript = document.querySelector("#categoryId");
 			var curCategoryId = parseInt(categoryScript.innerText);
 			var curCategory = categoryList[curCategoryId].querySelector("a");
