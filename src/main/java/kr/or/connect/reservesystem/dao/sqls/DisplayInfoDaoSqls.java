@@ -20,5 +20,5 @@ public class DisplayInfoDaoSqls {
 			+ "FROM display_info "
 			+ "JOIN product on display_info.product_id = product.id "
 			+ "JOIN category on product.category_id = category.id "
-			+ "WHERE display_info.id =1";
+			+ "WHERE display_info.id =:displayInfoId";
 }

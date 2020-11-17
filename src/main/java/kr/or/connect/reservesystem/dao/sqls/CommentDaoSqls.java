@@ -16,6 +16,6 @@ public class CommentDaoSqls {
 			+ "JOIN reservation_info ON reservation_info.id=reservation_user_comment.reservation_info_id "
 			+ "JOIN product ON product.id = reservation_info.product_id "
 			+ "JOIN display_info ON product.id= display_info.product_id "
-			+ "WHERE display_info.id= 1";
+			+ "WHERE display_info.id= :displayInfoId";
 	
 }
