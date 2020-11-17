@@ -16,20 +16,7 @@
 
 <body>
 	<div id="container">
-		<div class="header">
-			<header class="header_tit">
-				<h1 class="logo">
-					<a href="https://m.naver.com/" class="lnk_logo" title="네이버"> <span
-						class="spr_bi ico_n_logo">네이버</span>
-					</a> <a href="./myreservation.html" class="lnk_logo" title="예약"> <span
-						class="spr_bi ico_bk_logo">예약</span>
-					</a>
-				</h1>
-				<a href="./bookinglogin.html" class="btn_my"> <span
-					class="viewReservation" title="예약확인">예약확인</span>
-				</a>
-			</header>
-		</div>
+		<jsp:include page="/WEB-INF/views/include/header.jsp"/>
 		<hr>
 		<div class="event">
 			<div class="section_visual">
@@ -86,20 +73,7 @@
 			</div>
 		</div>
 	</div>
-	<footer>
-		<div class="gototop">
-			<a href="#" class="lnk_top"> <span class="lnk_top_text">TOP</span>
-			</a>
-		</div>
-		<div class="footer">
-			<p class="dsc_footer">네이버(주)는 통신판매의 당사자가 아니며, 상품의정보, 거래조건, 이용 및
-				환불 등과 관련한 의무와 책임은 각 회원에게 있습니다.</p>
-			<span class="copyright">© NAVER Corp.</span>
-		</div>
-	</footer>
-
-
-
+	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 
 	<script type="rv-template" id="promotionItem">
     <li class="item" style="background-image: url({productImageUrl});">
@@ -127,13 +101,12 @@
             </a>
         </li>
     </script>
+    <script src="js/init/init.js"></script>
 	<script src="js/mainpage.js"></script>
 	<script src="js/promotion.js"></script>
 	<script src="js/product.js"></script>
 	<script src="js/category.js"></script>
-	<script id="categoryId">
-		0
-	</script>
+	<script id="categoryId">0</script>
 	<script id="totalCount"></script>
 
 </body>
