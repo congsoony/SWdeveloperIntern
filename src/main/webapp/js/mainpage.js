@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded",()=> {
 	getProducts();
 	getCategories();
 	btnClickMore();
+	goToTopEventListener();
 });
 
 function getData(url, fun) {
