@@ -13,16 +13,21 @@ import kr.or.connect.reservesystem.dto.Promotion;
 import kr.or.connect.reservesystem.service.PromotionService;
 
 @RestController
-@RequestMapping(path="/api/promotions")
+@RequestMapping(path = "/api/promotions")
 public class PromotionController {
+
 	@Autowired
 	PromotionService promotionService;
-	
+
 	@GetMapping
-	public Map<String,Object> getPromotions(){
-		Map<String,Object> map =new HashMap<>();
-		List<Promotion> list=promotionService.getPromotions();
+	public Map<String, Object> getPromotions() {
+		
+		Map<String, Object> map = new HashMap<>();
+		List<Promotion> list = promotionService.getPromotions();
+		
 		map.put("items", list);
+		
 		return map;
 	}
+
 }

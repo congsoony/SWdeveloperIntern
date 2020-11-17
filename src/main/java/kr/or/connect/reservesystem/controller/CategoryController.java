@@ -13,17 +13,22 @@ import kr.or.connect.reservesystem.dto.Category;
 import kr.or.connect.reservesystem.service.CategoryService;
 
 @RestController
-@RequestMapping(path="/api/categories")
+@RequestMapping(path = "/api/categories")
 public class CategoryController {
+
 	@Autowired
 	private CategoryService categoryService;
 
 	@GetMapping
 	public Map<String, Object> getCategories() {
+		
 		Map<String, Object> map = new HashMap<>();
 		List<Category> list = categoryService.getCategories();
+		
 		map.put("items", list);
+		
 		return map;
+		
 	}
-	
+
 }

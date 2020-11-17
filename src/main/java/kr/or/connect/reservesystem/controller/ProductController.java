@@ -37,10 +37,10 @@ public class ProductController {
 			list = productService.getAllProductsList(start);
 			totalCount = productService.getALLProductsTotalCount();
 		}
-		
+
 		map.put("items", list);
 		map.put("totalCount", totalCount);
-		
+
 		return map;
 	}
 
