@@ -13,6 +13,6 @@ public class DisplayInfoImageDaoSqls {
 			+ "FROM display_info_image "
 			+ "JOIN file_info ON display_info_image.file_id= file_info.id "
 			+ "JOIN display_info ON display_info_image.display_info_id = display_info.id "
-			+ "WHERE display_info.id=2";
+			+ "WHERE display_info.id=:displayInfoId";
 	
 }
