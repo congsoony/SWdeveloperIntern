@@ -11,24 +11,25 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import kr.or.connect.reservesystem.dto.CommentImage;
-import static kr.or.connect.reservesystem.dao.sqls.CommentImageDaoSqls.*;
+import kr.or.connect.reservesystem.dto.ProductImages;
+import static kr.or.connect.reservesystem.dao.sqls.ProductImagesDaoSqls.*;
 
 @Repository
-public class CommentImageDao {
-	private RowMapper<CommentImage> rowMapper = BeanPropertyRowMapper.newInstance(CommentImage.class);
+public class ProductImagesDao {
+
+	private RowMapper<ProductImages> rowMapper = BeanPropertyRowMapper.newInstance(ProductImages.class);
 	private NamedParameterJdbcTemplate jdbc;
 
-	public CommentImageDao(DataSource dataSource) {
+	public ProductImagesDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public List<CommentImage> getCommentImageList(int reservationUserCommentId) {
+	public List<ProductImages> getProductImagesList(int displayInfoId) {
 		Map<String, Integer> params = new HashMap<>();
-		
-		params.put("reservationUserCommentId", reservationUserCommentId);
-		
-		return jdbc.query(SELECT_BY_RESERVATION_USER_COMMENT_ID, params, rowMapper);
+
+		params.put("displayInfoId", displayInfoId);
+
+		return jdbc.query(SELECT_BY_DISPLAY_INFO_ID, params, rowMapper);
 	}
 
 }
