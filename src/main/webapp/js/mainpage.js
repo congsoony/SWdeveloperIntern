@@ -40,7 +40,16 @@ function btnClickMore(categoryId){
 function productDetatilClickListener(){
 	var productHtml = document.querySelector(".wrap_event_box");
 	productHtml.addEventListener('click',(evt)=>{
-		console.log(evt.target.innerHTML);
+		var nodeName=evt.target.nodeName;
+		if(nodeName=="SPAN"&&evt.target.parentNode.nodeName=="BUTTON"){
+			return;
+		}
+		if(nodeName=="DIV"||nodeName=="UL"||nodeName=="BUTTON"){
+			return;
+		}
+		var litag = evt.target.closest("li");
+		var displayInfoId = litag.dataset.displayinfoid;
+		location.href="detail";
 	});
 
 }
