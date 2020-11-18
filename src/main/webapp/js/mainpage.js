@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded",()=> {
 	btnClickMore();
 	goToTopEventListener();
 	productDetatilClickListener();
-
 });
 
 function getData(url, fun) {
