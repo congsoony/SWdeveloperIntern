@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	getProducts();
 	getCategories();
 	btnClickMore();
+	productDetatilClickListener();
 });
 
 function getData(url, fun) {
@@ -33,4 +34,12 @@ function btnClickMore(categoryId){
 		var url="api/products?categoryId="+curCategoryId+"&start="+start;
 		getData(url,showAddProducts);
 	});
+}
+
+function productDetatilClickListener(){
+	var productHtml = document.querySelector(".wrap_event_box");
+	productHtml.addEventListener('click',(evt)=>{
+		console.log(evt.target.innerHTML);
+	});
+
 }
