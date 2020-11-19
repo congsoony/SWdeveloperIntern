@@ -25,7 +25,7 @@ public class DisplayInfoImageController {
 		Map<String, Object> map = new HashMap<>();
 		DisplayInfoImage item = displayInfoImageService.getDisplayInfoImage(displayInfoId);
 
-		map.put("displayInnfoImage", item);
+		map.put("displayInfoImage", item);
 
 		return map;
 	}
