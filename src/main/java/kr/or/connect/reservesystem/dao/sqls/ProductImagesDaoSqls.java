@@ -15,5 +15,5 @@ public class ProductImagesDaoSqls {
 			+ "JOIN  product_image ON  file_info.id= product_image.file_id "
 			+ "JOIN  product ON product.id=product_image.product_id "
 			+ "JOIN display_info ON product.id= display_info.product_id "
-			+ "WHERE product_image.type = 'ma' AND display_info.id=:displayInfoId";
+			+ "WHERE product_image.type = :type AND display_info.id=:displayInfoId";
 }

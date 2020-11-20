@@ -11,7 +11,7 @@ public class DisplayInfoDaoSqls {
 			+ "display_info.opening_hours as opening_hours, "
 			+ "display_info.place_lot as place_lot, "
 			+ "display_info.place_name as place_name, "
-			+ "display_info.place_street as place_stree, "
+			+ "display_info.place_street as place_street, "
 			+ "product.content as product_content, "
 			+ "product.description as product_description, "
 			+ "product.event as product_event, "
