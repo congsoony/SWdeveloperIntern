@@ -1,32 +1,109 @@
 document.addEventListener("DOMContentLoaded",()=> {
+    init();
     goToTopEventListener();
     showProductIamges();
+    buttonSetListener();
 });
-
+function init(){
+    document.querySelector("#product_img").style.transition = "right 0.3ss";
+}
 function showProductIamges(){
     var displayInfoId = getParameterByName("displayInfoId");
-    var url = "api/productimages?displayInfoId="+displayInfoId;
-    getData(url, getProductImages);
-    url = "api/displayinfo?displayInfoId="+displayInfoId;
+    var url = "api/displayinfo?displayInfoId="+displayInfoId;    
     getData(url,getDisplayInfo);
 }
 
-function getProductImages(jsonObj){
-    
-	var imagesData=jsonObj.productImages;
-    var template = document.querySelector("#img_script_template").innerText;
-    var ultag = document.querySelector("#product_img");
-    var bindTemplate = Handlebars.compile(template); //bindTemplate은 메서드 즉 함수임 handlebars.compile이 반환하는게 함수라서
-    ultag.innerHTML= imagesData.reduce(function(prev,next){
-       return prev+bindTemplate(next);
-   },"");
-}
-
 function getDisplayInfo(jsonObj){
-	
-    var imagesData = jsonObj.displayInfo;
+    
+    //상품 내용보여주기
+    var displayInfoObj = jsonObj.displayInfo;
     var productContent= document.querySelector("#content_summary_txt");
     var bindTemplate = Handlebars.compile(productContent.innerHTML);
-    productContent.innerHTML= bindTemplate(imagesData);
-    debugger;
+    productContent.innerHTML= bindTemplate(displayInfoObj);
+    
+    //선택한 상품 이미지 & 제목
+    var imagesObj=jsonObj.mainImages;
+    imagesObj.forEach((item)=>{
+        item.productDescription=displayInfoObj.productDescription;
+    });
+    var template = document.querySelector("#img_script_template").innerText;
+    var ultag = document.querySelector("#product_img");
+    bindTemplate = Handlebars.compile(template); //bindTemplate은 메서드 즉 함수임 handlebars.compile이 반환하는게 함수라서
+    ultag.innerHTML= imagesObj.reduce(function(prev,next){
+       return prev+bindTemplate(next);
+   },"");
+    
+    addEtcImages(jsonObj.etcImages,displayInfoObj.productDescription,ultag);
+}
+
+function buttonSetListener(){
+    var watchMoreBtn = document.querySelector("#watch_more");
+    var watchLessBtn = document.querySelector("#watch_less");
+    var rightBtn = document.querySelector("#click_nxt");
+    var leftBtn = document.querySelector("#click_prev");
+
+    watchMoreBtn.addEventListener('click',()=>{
+        var content=document.querySelector("#content_summary");
+        content.className="store_details";
+        watchMoreBtn.style.display="none";
+        watchLessBtn.style.display="block";
+    });
+    
+    watchLessBtn.addEventListener('click',()=>{
+        var content=document.querySelector("#content_summary");
+        content.className="store_details close3";
+        watchMoreBtn.style.display="block";
+        watchLessBtn.style.display="none";
+    });
+
+    rightBtn.addEventListener('click',()=>{
+        var imgHtml = document.querySelector("#product_img");
+        var curPage = parseInt(document.querySelector("#figure_num").dataset.num);
+        rightClickAnimate(curPage,2,imgHtml);
+    });
+    
+    leftBtn.addEventListener('click',()=>{
+        var imgHtml = document.querySelector("#product_img");
+        var curPage = parseInt(document.querySelector("#figure_num").dataset.num);
+    });
+}
+
+function addEtcImages(imagesObj,productDescription,ultag){
+	if(imagesObj.length<=0){
+        //양쪽버튼 지우기
+        document.querySelector("#click_nxt").style.display="none";
+        document.querySelector("#click_prev").style.display="none";
+		return;
+	}
+	var tempInnerHTML=ultag.innerHTML;
+	imagesObj[0].productDescription=productDescription;
+	var template = document.querySelector("#img_script_template").innerText;
+	var bindTemplate = Handlebars.compile(template);
+	ultag.innerHTML+= bindTemplate(imagesObj[0]);
+    ultag.innerHTML+=tempInnerHTML;
+    
+    //etc이미지 개수 초기
+    document.querySelector("#figure_total").innerText=2;
+}
+
+function rightClickAnimate(idx, length, imgHtml) {
+    imgHtml.style.transition = "all 0.3s";
+    imgHtml.style.right = idx * 414 + "px";
+    var next=idx+1;
+    var figureNum=document.querySelector("#figure_num");
+    figureNum.innerText = (next%length)+1;
+    figureNum.dataset.num=next;
+   
+/*
+    if(next==length)
+    {
+        setTimeout(() => {
+			imgHtml.style.transition = "all 0s";
+			imgHtml.style.right = "0px";
+            idx = 0;
+            document.querySelector("#figure_num").innerText = next;
+		}, 300);
+    }
+*/    
+
 }
