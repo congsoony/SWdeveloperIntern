@@ -29,7 +29,7 @@
 					<div class="pagination">
 						<div class="bg_pagination"></div>
 						<div class="figure_pagination">
-							<span class="num" id="figiure_num">1</span> <span class="num off">/ <span id="figure_total">2</span></span>
+							<span class="num" id="figure_num" data-num="1">1</span> <span class="num off">/ <span id="figure_total">1</span></span>
 						</div>
 					</div>
 					<div class="group_visual">
@@ -40,14 +40,14 @@
 							</div>
 							<div class="prev">
 								<div class="prev_inn">
-									<a href="#" class="btn_prev" title="이전" id="click_prev"> <!-- [D] 첫 이미지 이면 off 클래스 추가 -->
+									<a class="btn_prev" title="이전" id="click_prev"> <!-- [D] 첫 이미지 이면 off 클래스 추가 -->
 										<i class="spr_book2 ico_arr6_lt off"></i>
 									</a>
 								</div>
 							</div>
 							<div class="nxt">
 								<div class="nxt_inn">
-									<a href="#" class="btn_nxt" title="다음" id="click_nxt"> <i
+									<a class="btn_nxt" title="다음" id="click_nxt"> <i
 										class="spr_book2 ico_arr6_rt"></i>
 									</a>
 								</div>
@@ -274,7 +274,7 @@
 		integrity="sha512-fujQJs+fkj7+Az7XKDxMLbVuuaeljjqMQDh3TAI7nYKQMQhEztrmyuex6hlnRuttjXJ9BFvnl4r/t8r8L6gFfA=="
 		crossorigin="anonymous"></script>
 		
-	<script src="js/init/init.js"></script>
+	<script src="js/common/common.js"></script>
 	<script src="js/detail/detail.js"></script>
 </body>
 

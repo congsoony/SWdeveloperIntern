@@ -101,7 +101,7 @@
             </a>
         </li>
     </script>
-    <script src="js/init/init.js"></script>
+    <script src="js/common/common.js"></script>
 	<script src="js/mainpage.js"></script>
 	<script src="js/promotion.js"></script>
 	<script src="js/product.js"></script>
