@@ -22,10 +22,20 @@ public class CommentDao {
 	public CommentDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
-	
+
 	public List<Comment> getCommentList(int displayInfoId) {
 		Map<String, Integer> params = new HashMap<>();
+
+		params.put("displayInfoId", displayInfoId);
+
 		return jdbc.query(SELECT_BY_DISPLAY_INFO_ID, params, rowMapper);
 	}
-	
+	public Double getCommentAverage(int displayInfoId) {
+		Map<String, Integer> params = new HashMap<>();
+
+		params.put("displayInfoId", displayInfoId);
+
+		return jdbc.queryForObject(SELECT_AVG_BY_DISPLAY_INFO_ID, params, Double.class);
+	}
+
 }

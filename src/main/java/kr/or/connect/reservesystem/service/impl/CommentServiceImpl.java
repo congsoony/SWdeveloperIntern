@@ -22,4 +22,10 @@ public class CommentServiceImpl implements CommentService {
 		return commentDao.getCommentList(displayInfoId);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public double getCommentAverage(int displayInfoId) {
+		return commentDao.getCommentAverage(displayInfoId);
+	}
+
 }
