@@ -5,6 +5,6 @@ import java.util.List;
 import kr.or.connect.reservesystem.dto.ProductImages;
 
 public interface ProductImagesService {
-	public List<ProductImages> getProductImagesList(int displayInfoId);
+	public List<ProductImages> getProductImagesList(int displayInfoId,String type);
 	
 }

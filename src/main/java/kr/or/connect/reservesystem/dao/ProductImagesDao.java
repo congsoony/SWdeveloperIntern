@@ -24,11 +24,11 @@ public class ProductImagesDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public List<ProductImages> getProductImagesList(int displayInfoId) {
-		Map<String, Integer> params = new HashMap<>();
-
+	public List<ProductImages> getProductImagesList(int displayInfoId,String type) {
+		Map<String, Object> params = new HashMap<>();
+		
 		params.put("displayInfoId", displayInfoId);
-
+		params.put("type", type);
 		return jdbc.query(SELECT_BY_DISPLAY_INFO_ID, params, rowMapper);
 	}
 
