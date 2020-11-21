@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded",()=> {
     buttonSetListener();
 });
 function init(){
-    document.querySelector("#product_img").style.transition = "right 0.3ss";
+    document.querySelector("#product_img").style.transition = "all 0.3s";
+    document.querySelector("#product_img").style.right ="0px";
 }
 function showProductIamges(){
     var displayInfoId = getParameterByName("displayInfoId");
@@ -15,20 +16,22 @@ function showProductIamges(){
 
 function getDisplayInfo(jsonObj){
     
-    //상품 내용보여주기
+    // 상품 내용보여주기
     var displayInfoObj = jsonObj.displayInfo;
     var productContent= document.querySelector("#content_summary_txt");
     var bindTemplate = Handlebars.compile(productContent.innerHTML);
     productContent.innerHTML= bindTemplate(displayInfoObj);
     
-    //선택한 상품 이미지 & 제목
+    // 선택한 상품 이미지 & 제목
     var imagesObj=jsonObj.mainImages;
     imagesObj.forEach((item)=>{
         item.productDescription=displayInfoObj.productDescription;
     });
     var template = document.querySelector("#img_script_template").innerText;
     var ultag = document.querySelector("#product_img");
-    bindTemplate = Handlebars.compile(template); //bindTemplate은 메서드 즉 함수임 handlebars.compile이 반환하는게 함수라서
+    bindTemplate = Handlebars.compile(template); // bindTemplate은 메서드 즉 함수임
+													// handlebars.compile이 반환하는게
+													// 함수라서
     ultag.innerHTML= imagesObj.reduce(function(prev,next){
        return prev+bindTemplate(next);
    },"");
@@ -65,12 +68,13 @@ function buttonSetListener(){
     leftBtn.addEventListener('click',()=>{
         var imgHtml = document.querySelector("#product_img");
         var curPage = parseInt(document.querySelector("#figure_num").dataset.num);
+        leftClickAnimate(curPage,2,imgHtml);
     });
 }
 
 function addEtcImages(imagesObj,productDescription,ultag){
 	if(imagesObj.length<=0){
-        //양쪽버튼 지우기
+        // 양쪽버튼 지우기
         document.querySelector("#click_nxt").style.display="none";
         document.querySelector("#click_prev").style.display="none";
 		return;
@@ -82,28 +86,55 @@ function addEtcImages(imagesObj,productDescription,ultag){
 	ultag.innerHTML+= bindTemplate(imagesObj[0]);
     ultag.innerHTML+=tempInnerHTML;
     
-    //etc이미지 개수 초기
+    // etc이미지 개수 초기
     document.querySelector("#figure_total").innerText=2;
 }
 
-function rightClickAnimate(idx, length, imgHtml) {
-    imgHtml.style.transition = "all 0.3s";
-    imgHtml.style.right = idx * 414 + "px";
-    var next=idx+1;
+function rightClickAnimate(curPage, length, imgHtml) {
     var figureNum=document.querySelector("#figure_num");
-    figureNum.innerText = (next%length)+1;
-    figureNum.dataset.num=next;
-   
-/*
-    if(next==length)
-    {
-        setTimeout(() => {
+    var text=parseInt(figureNum.innerText);
+    if(curPage==length-1){
+		setTimeout(() => {
+		imgHtml.style.transition = "all 0.3s";
+		imgHtml.style.right = 414*length+"px";
+		}, 100);
+		setTimeout(() => {
 			imgHtml.style.transition = "all 0s";
 			imgHtml.style.right = "0px";
-            idx = 0;
-            document.querySelector("#figure_num").innerText = next;
 		}, 300);
-    }
-*/    
+	}
+	else {
+		setTimeout(() => {
+		imgHtml.style.transition = "all 0.3s";
+		imgHtml.style.right = (curPage+1)*414+"px";
+		},100);
+	}
+    figureNum.innerText=1+(curPage+1)%length;
+	figureNum.dataset.num=(curPage+1)%length;
+}
+
+
+function leftClickAnimate(curPage, length, imgHtml) {
+    
+	var figureNum=document.querySelector("#figure_num");
+
+	if(curPage==0){
+		setTimeout(() => {
+		imgHtml.style.transition = "all 0s";
+		imgHtml.style.right = 414*length+"px";
+		}, 0);
+		setTimeout(() => {
+		imgHtml.style.transition = "all 0.3s";
+		imgHtml.style.right = 414*(length-1)+"px";
+		}, 100);
+	}
+	else {
+		setTimeout(() => {
+		imgHtml.style.transition = "all 0.3s";
+		imgHtml.style.right = (curPage-1)*414+"px";
+		},100);
+	}
+	figureNum.innerText=1+((curPage-1+length)%length);
+	figureNum.dataset.num=(curPage-1+length)%length;
 
 }
