@@ -29,7 +29,7 @@
 					<div class="pagination">
 						<div class="bg_pagination"></div>
 						<div class="figure_pagination">
-							<span class="num" id="figure_num" data-num="1">1</span> <span class="num off">/ <span id="figure_total">1</span></span>
+							<span class="num" id="figure_num" data-num="0">1</span> <span class="num off">/ <span id="figure_total">1</span></span>
 						</div>
 					</div>
 					<div class="group_visual">
