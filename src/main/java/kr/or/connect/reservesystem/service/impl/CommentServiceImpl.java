@@ -21,6 +21,12 @@ public class CommentServiceImpl implements CommentService {
 	public List<Comment> getCommentList(int displayInfoId) {
 		return commentDao.getCommentList(displayInfoId);
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Comment> getCommentLimitList(int displayInfoId) {
+		return commentDao.getCommentLimitList(displayInfoId);
+	}
 
 	@Override
 	@Transactional(readOnly = true)
@@ -28,4 +34,11 @@ public class CommentServiceImpl implements CommentService {
 		return commentDao.getCommentAverage(displayInfoId);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public int getCommentTotalCount(int displayInfoId) {
+		return commentDao.getCommentTotalCount(displayInfoId);
+	}
+	
+	
 }

@@ -30,6 +30,24 @@ public class CommentDao {
 
 		return jdbc.query(SELECT_BY_DISPLAY_INFO_ID, params, rowMapper);
 	}
+	public List<Comment> getCommentLimitList(int displayInfoId) {
+		Map<String, Integer> params = new HashMap<>();
+		
+		params.put("displayInfoId", displayInfoId);
+		params.put("limit", LIMIT);
+		
+		return jdbc.query(SELECT_BY_DISPLAY_INFO_ID_LIMIT, params, rowMapper);
+	}
+	
+	public int getCommentTotalCount(int displayInfoId) {
+		Map<String, Integer> params = new HashMap<>();
+
+		params.put("displayInfoId", displayInfoId);
+
+		return jdbc.queryForObject(SELECT_COUNT_BY_DISPLAY_INFO_ID, params, Integer.class);
+		
+	}
+	
 	public Double getCommentAverage(int displayInfoId) {
 		Map<String, Integer> params = new HashMap<>();
 
