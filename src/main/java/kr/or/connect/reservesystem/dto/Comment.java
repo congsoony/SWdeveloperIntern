@@ -5,7 +5,7 @@ import java.util.List;
 public class Comment {
 	
 	private String comment;
-	private String commentId;
+	private int commentId;
 	private List<CommentImage> commentImages;
 	private String createDate;
 	private String modifyDate;
@@ -25,11 +25,11 @@ public class Comment {
 		this.comment = comment;
 	}
 
-	public String getCommentId() {
+	public int getCommentId() {
 		return commentId;
 	}
 
-	public void setCommentId(String commentId) {
+	public void setCommentId(int commentId) {
 		this.commentId = commentId;
 	}
 
