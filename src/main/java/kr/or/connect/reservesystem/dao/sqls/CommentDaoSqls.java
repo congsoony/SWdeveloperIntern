@@ -43,6 +43,7 @@ public class CommentDaoSqls {
 	
 	public static final String SELECT_AVG_BY_DISPLAY_INFO_ID="SELECT IFNULL(ROUND(AVG(score),2),0) average_score "
 			+ "FROM reservation_user_comment "
-			+ "JOIN display_info ON display_info.product_id = reservation_user_comment.product_id "
+			+ "JOIN reservation_info ON reservation_info.id=reservation_user_comment.reservation_info_id "
+			+ "JOIN display_info ON display_info.product_id = reservation_info.product_id "
 			+ "WHERE display_info.id=:displayInfoId";
 }
