@@ -40,10 +40,48 @@ detailObj.display = {
         ultag.innerHTML = imagesObj.reduce(function (prev, next) {
             return prev + bindTemplate(next);
         }, "");
-
         detailObj.addObj.addEtcImages(jsonObj.etcImages,displayInfoObj.productDescription,ultag);
+        detailObj.display.review(jsonObj.comments,jsonObj.averageScore,jsonObj.totalCount,jsonObj.mainImages[0]);
     },
     
+    review(comments,averageScore,totalCount,product){
+        document.querySelector("#average_score").innerText=averageScore;
+        document.querySelector("#graph_value").style.width=(averageScore/5)*100+"%";
+        document.querySelector("#total_count").innerText=totalCount+"건";
+        var html =document.querySelector("#list_short_review");
+        var data=[];
+        //동적데이터 obj만들기
+        comments.forEach((item)=>{
+            obj={
+                comment:item.comment,
+                commentImages:item.commentImages,
+                date:item.reservationDate,
+                score:item.score.toFixed(1),
+                productDescription:product.productDescription,
+                reservationEmail:makeEmailSecurity(item.reservationEmail)
+            }
+            if(item.commentImages.length>0){
+                obj.saveFileName=[];
+                item.commentImages.forEach((image)=>{
+                    obj.saveFileName.push(image.saveFileName);
+                });
+            }
+            data.push(obj);
+        });
+
+        //template 처리
+        Handlebars.registerHelper('idx', function (index) {
+            return parseInt(index)+1;
+        });
+        var template = document.querySelector("#comment_script_template").innerText;
+        var bindTemplate = Handlebars.compile(template);
+        var resultHTML=data.reduce((prev,next)=>{
+            return prev+bindTemplate(next);
+        },"");
+        html.innerHTML=resultHTML;
+
+        
+    }
 }
 
 detailObj.addObj = {
@@ -68,6 +106,7 @@ detailObj.addObj = {
 
 detailObj.btnSet = {
     buttonSetListener() {
+    	
         var watchMoreBtn = document.querySelector("#watch_more");
         var watchLessBtn = document.querySelector("#watch_less");
         var rightBtn = document.querySelector("#click_nxt");
@@ -86,7 +125,7 @@ detailObj.btnSet = {
             watchMoreBtn.style.display = "block";
             watchLessBtn.style.display = "none";
         });
-
+        
         rightBtn.addEventListener('click', () => {
             var imgHtml = document.querySelector("#product_img");
             var curPage = parseInt(document.querySelector("#figure_num").dataset.num);
@@ -96,6 +135,7 @@ detailObj.btnSet = {
         leftBtn.addEventListener('click', () => {
             var imgHtml = document.querySelector("#product_img");
             var curPage = parseInt(document.querySelector("#figure_num").dataset.num);
+            
             this.leftClickAnimate(curPage, 2, imgHtml);
         });
 

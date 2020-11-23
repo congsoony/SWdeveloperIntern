@@ -104,11 +104,11 @@
 						<div class="short_review_area">
 							<div class="grade_area">
 								<!-- [D] 별점 graph_value는 퍼센트 환산하여 width 값을 넣어줌 -->
-								<span class="graph_mask"> <em class="graph_value"
+								<span class="graph_mask"> <em class="graph_value" id="graph_value"
 									style="width: 84%;"></em>
-								</span> <strong class="text_value"> <span>4.2</span> <em
+								</span> <strong class="text_value"> <span id="average_score">4.2</span> <em
 									class="total">5.0</em>
-								</strong> <span class="join_count"><em class="green">52건</em> 등록</span>
+								</strong> <span class="join_count"><em class="green" id="total_count">52건</em> 등록</span>
 							</div>
 							<ul class="list_short_review" id="list_short_review">
 							</ul>
@@ -220,11 +220,15 @@
 				{{#if commentImages}}
 					<div class="review_area">
 						<div class="thumb_area">
-							<a class="thumb" title="이미지 크게 보기"> <img
-								width="90" height="90" class="img_vertical_top"
-								src="{{saveFileName}}"
-								alt="리뷰이미지">
-							</a> <span class="img_count" style="display: none;">1</span>
+							{{#each commentImages}}
+								<a class="thumb" title="이미지 크게 보기"> <img
+									width="90" height="90" class="img_vertical_top"
+									src="{{saveFileName}}"
+									alt="리뷰이미지">
+								</a> <span class="img_count" style="display: block;">
+										{{idx @index}}
+								</span>
+							{{/each}}
 						</div>
 						<h4 class="resoc_name">{{productDescription}}</h4>
 						<p class="review">{{comment}}</p>
@@ -239,7 +243,7 @@
 				{{/if}}
 				<div class="info_area">
 					<div class="review_info">
-						<span class="grade">{{score}}</span> <span class="name">dbfl****</span>
+						<span class="grade">{{score}}</span> <span class="name">{{reservationEmail}}</span>
 						<span class="date">{{date}}</span>
 					</div>
 				</div>
