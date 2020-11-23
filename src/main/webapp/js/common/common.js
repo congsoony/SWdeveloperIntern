@@ -27,3 +27,7 @@ function getParameterByName(name) {
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+function makeEmailSecurity(email){
+    var id =email.split("@")[0].replace(/(?<=.{4})./gi,""); 
+    return id+"****";
+}
