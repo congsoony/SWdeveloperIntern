@@ -29,7 +29,8 @@
 					<div class="pagination">
 						<div class="bg_pagination"></div>
 						<div class="figure_pagination">
-							<span class="num" id="figure_num" data-num="0">1</span> <span class="num off">/ <span id="figure_total">1</span></span>
+							<span class="num" id="figure_num" data-num="0">1</span> <span
+								class="num off">/ <span id="figure_total">1</span></span>
 						</div>
 					</div>
 					<div class="group_visual">
@@ -73,10 +74,10 @@
 						<p class="dsc" id="content_summary_txt">{{productContent}}</p>
 					</div>
 					<!-- [D] 토글 상황에 따라 bk_more에 display:none 추가 -->
-					<a id="watch_more" class="bk_more _open"> <span class="bk_more_txt">펼쳐보기</span>
-						<i class="fn fn-down2"></i>
-					</a> <a id="watch_less" class="bk_more _close" style="display: none;"> <span
-						class="bk_more_txt">접기</span> <i class="fn fn-up2"></i>
+					<a id="watch_more" class="bk_more _open"> <span
+						class="bk_more_txt">펼쳐보기</span> <i class="fn fn-down2"></i>
+					</a> <a id="watch_less" class="bk_more _close" style="display: none;">
+						<span class="bk_more_txt">접기</span> <i class="fn fn-up2"></i>
 					</a>
 				</div>
 				<div class="section_event">
@@ -104,11 +105,12 @@
 						<div class="short_review_area">
 							<div class="grade_area">
 								<!-- [D] 별점 graph_value는 퍼센트 환산하여 width 값을 넣어줌 -->
-								<span class="graph_mask"> <em class="graph_value" id="graph_value"
-									style="width: 84%;"></em>
-								</span> <strong class="text_value"> <span id="average_score">4.2</span> <em
-									class="total">5.0</em>
-								</strong> <span class="join_count"><em class="green" id="total_count">52건</em> 등록</span>
+								<span class="graph_mask"> <em class="graph_value"
+									id="graph_value" style="width: 84%;"></em>
+								</span> <strong class="text_value"> <span id="average_score">4.2</span>
+									<em class="total">5.0</em>
+								</strong> <span class="join_count"><em class="green"
+									id="total_count">52건</em> 등록</span>
 							</div>
 							<ul class="list_short_review" id="list_short_review">
 							</ul>
@@ -118,7 +120,7 @@
 								이용자가 남긴 평가입니다.</span>
 						</p>
 					</div>
-					<a class="btn_review_more" href="./review.html"> <span>예매자
+					<a class="btn_review_more" id="btn_review_more"> <span>예매자
 							한줄평 더보기</span> <i class="fn fn-forward1"></i>
 					</a>
 				</div>
@@ -128,7 +130,8 @@
 						<li class="item active _detail"><a id="btn_detail_info"
 							class="anchor active"> <span>상세정보</span>
 						</a></li>
-						<li class="item _path"><a class="anchor" id="btn_detail_coming"> <span>오시는길</span>
+						<li class="item _path"><a class="anchor"
+							id="btn_detail_coming"> <span>오시는길</span>
 						</a></li>
 					</ul>
 					<!-- [D] 상세정보 외 다른 탭 선택 시 detail_area_wrap에 hide 추가 -->
@@ -150,8 +153,19 @@
 						</div>
 					</div>
 					<!-- [D] 오시는길 외 다른 탭 선택 시 detail_location에 hide 추가 -->
-					<div class="detail_location hide" id="detail_location">
-						<div class="box_store_info no_topline">
+					<div class="detail_location hide" id="detail_location"></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+	<div id="photoviwer"></div>
+
+
+	<script type="rv-template" id="coming_script_template">
+		<div class="box_store_info no_topline">
 							<a class="store_location" title="지도웹으로 연결"> <img
 								class="store_map img_thumb" alt="map"
 								src="{{saveFileName}}">
@@ -186,15 +200,7 @@
 								</a>
 							</div>
 						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
-	<div id="photoviwer"></div>
+    </script>
 
 	<script type="rv-template" id="img_script_template">
         <li class="item" style="width: 414px;"><img alt=""
@@ -209,7 +215,7 @@
             </div>
         </li>
     </script>
-    <script type="rv-template" id="comment_script_template">
+	<script type="rv-template" id="comment_script_template">
 		<li class="list_item">
 			<div>
 				{{#if commentImages}}
@@ -239,18 +245,21 @@
 				<div class="info_area">
 					<div class="review_info">
 						<span class="grade">{{score}}</span> <span class="name">{{reservationEmail}}</span>
-						<span class="date">{{date}}</span>
+						<span class="date">{{date}} 방문</span>
 					</div>
 				</div>
 			</div>
 		</li>
-	</script>    
+	</script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"
 		integrity="sha512-fujQJs+fkj7+Az7XKDxMLbVuuaeljjqMQDh3TAI7nYKQMQhEztrmyuex6hlnRuttjXJ9BFvnl4r/t8r8L6gFfA=="
 		crossorigin="anonymous"></script>
-		
+
+
 	<script src="js/common/common.js"></script>
+	<script src="js/detail/display.js"></script>
+	<script src="js/detail/init.js"></script>
 	<script src="js/detail/detail.js"></script>
 </body>
 
