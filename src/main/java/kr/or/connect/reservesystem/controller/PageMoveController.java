@@ -15,4 +15,9 @@ public class PageMoveController {
 	public String moveDtatil() {
 		return "detail";
 	}
+	
+	@RequestMapping(path = "/review",method = RequestMethod.GET)
+	public String moveReview() {
+		return "review";
+	}
 }
