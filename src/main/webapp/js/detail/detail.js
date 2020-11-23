@@ -15,6 +15,9 @@ detailObj.init = {
 
 
 detailObj.display = {
+    introduceContent: document.querySelector("#introduce_content"),
+    comingHtml : document.querySelector("#detail_location"),
+
     showProductIamges() {
         var displayInfoId = getParameterByName("displayInfoId");
         var url = "api/displayinfo?displayInfoId=" + displayInfoId;
@@ -25,8 +28,10 @@ detailObj.display = {
         var displayInfoObj = jsonObj.displayInfo;
         var productContent = document.querySelector("#content_summary_txt");
         var bindTemplate = Handlebars.compile(productContent.innerHTML);
-        productContent.innerHTML = bindTemplate(displayInfoObj);
 
+        productContent.innerHTML = bindTemplate(displayInfoObj);
+        
+        
         // 선택한 상품 이미지 & 제목
         var imagesObj = jsonObj.mainImages;
         imagesObj.forEach((item) => {
@@ -42,8 +47,23 @@ detailObj.display = {
         }, "");
         detailObj.addObj.addEtcImages(jsonObj.etcImages,displayInfoObj.productDescription,ultag);
         detailObj.display.review(jsonObj.comments,jsonObj.averageScore,jsonObj.totalCount,jsonObj.mainImages[0]);
+        detailObj.display.setIntroduce(jsonObj.displayInfo.productContent);
+        detailObj.display.setComing(jsonObj.displayInfo,jsonObj.displayInfoImage);
+        
     },
-    
+    setComing(displayinfo,displayInfoImage){
+        var data={
+            productDescription:displayinfo.productDescription,
+            placeStreet : displayinfo.placeStreet,
+            placeLot : displayinfo.placeLot,
+            placeName : displayinfo.placeName,
+            saveFileName : displayInfoImage.saveFileName,
+            telephone : displayinfo.telephone
+        };
+
+        var bindTemplate = Handlebars.compile(this.comingHtml.innerHTML);
+        this.comingHtml.innerHTML = bindTemplate(data);
+    },
     review(comments,averageScore,totalCount,product){
         document.querySelector("#average_score").innerText=averageScore;
         document.querySelector("#graph_value").style.width=(averageScore/5)*100+"%";
@@ -79,8 +99,9 @@ detailObj.display = {
             return prev+bindTemplate(next);
         },"");
         html.innerHTML=resultHTML;
-
-        
+    },
+    setIntroduce(productContent){
+    	this.introduceContent.innerText = productContent;
     }
 }
 
@@ -105,12 +126,17 @@ detailObj.addObj = {
 }
 
 detailObj.btnSet = {
+    detailInfo : document.querySelector("#detail_area_wrap"),
+    locationInfo :  document.querySelector("#detail_location"),
+
     buttonSetListener() {
     	
         var watchMoreBtn = document.querySelector("#watch_more");
         var watchLessBtn = document.querySelector("#watch_less");
         var rightBtn = document.querySelector("#click_nxt");
         var leftBtn = document.querySelector("#click_prev");
+        var introduceBtn = document.querySelector("#btn_detail_info");
+        var comingBtn = document.querySelector("#btn_detail_coming");
 
         watchMoreBtn.addEventListener('click', () => {
             var content = document.querySelector("#content_summary");
@@ -137,8 +163,22 @@ detailObj.btnSet = {
             var curPage = parseInt(document.querySelector("#figure_num").dataset.num);
             
             this.leftClickAnimate(curPage, 2, imgHtml);
+            
         });
 
+        introduceBtn.addEventListener('click',()=>{
+            this.detailInfo.className="detail_area_wrap";
+            this.locationInfo.className="detail_location hide";
+            introduceBtn.className="anchor active";
+            comingBtn.className="anchor";
+        });
+
+        comingBtn.addEventListener('click',()=>{
+            this.detailInfo.className="detail_area_wrap hide";
+            this.locationInfo.className="detail_location";
+            introduceBtn.className="anchor";
+            comingBtn.className="anchor active";
+        });
     },
 
     rightClickAnimate(curPage, length, imgHtml) {
