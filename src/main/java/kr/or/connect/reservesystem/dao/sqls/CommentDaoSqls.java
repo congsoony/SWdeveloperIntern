@@ -13,9 +13,9 @@ public class CommentDaoSqls {
 			+ "reservation_info.reservation_name as reservation_name, "
 			+ "reservation_info.reservation_tel as reservation_telephone, "
 			+ "reservation_user_comment.score as score "
-			+ "FROM reservation_user_comment "
-			+ "JOIN reservation_info ON reservation_info.id=reservation_user_comment.reservation_info_id "
-			+ "JOIN display_info ON display_info.product_id = reservation_info.product_id "
+			+ "FROM display_info "
+			+ "JOIN reservation_info ON display_info.product_id = reservation_info.product_id "
+			+ "JOIN reservation_user_comment ON reservation_info.id=reservation_user_comment.reservation_info_id "
 			+ "WHERE display_info.id=:displayInfoId";
 	
 	public static final String SELECT_BY_DISPLAY_INFO_ID_LIMIT="SELECT reservation_user_comment.comment AS comment, "
@@ -29,21 +29,23 @@ public class CommentDaoSqls {
 			+ "reservation_info.reservation_name as reservation_name, "
 			+ "reservation_info.reservation_tel as reservation_telephone, "
 			+ "reservation_user_comment.score as score "
-			+ "FROM reservation_user_comment "
-			+ "JOIN reservation_info ON reservation_info.id=reservation_user_comment.reservation_info_id "
-			+ "JOIN display_info ON display_info.product_id = reservation_info.product_id "
+			+ "FROM display_info "
+			+ "JOIN reservation_info ON display_info.product_id = reservation_info.product_id "
+			+ "JOIN reservation_user_comment ON reservation_info.id=reservation_user_comment.reservation_info_id "
 			+ "WHERE display_info.id=:displayInfoId "
 			+ "LIMIT :limit";
 	
 	public static final String SELECT_COUNT_BY_DISPLAY_INFO_ID="SELECT COUNT(*) AS count "
-			+ "FROM reservation_user_comment "
-			+ "JOIN reservation_info ON reservation_info.id=reservation_user_comment.reservation_info_id "
-			+ "JOIN display_info ON display_info.product_id = reservation_info.product_id "
+			+ "FROM display_info "
+			+ "JOIN reservation_info ON display_info.product_id = reservation_info.product_id "
+			+ "JOIN reservation_user_comment ON reservation_info.id=reservation_user_comment.reservation_info_id "
 			+ "WHERE display_info.id=:displayInfoId";
 	
+	
 	public static final String SELECT_AVG_BY_DISPLAY_INFO_ID="SELECT IFNULL(ROUND(AVG(score),2),0) average_score "
-			+ "FROM reservation_user_comment "
-			+ "JOIN reservation_info ON reservation_info.id=reservation_user_comment.reservation_info_id "
-			+ "JOIN display_info ON display_info.product_id = reservation_info.product_id "
+			+ "FROM display_info "
+			+ "JOIN reservation_info ON display_info.product_id = reservation_info.product_id "
+			+ "JOIN reservation_user_comment ON reservation_info.id=reservation_user_comment.reservation_info_id "
 			+ "WHERE display_info.id=:displayInfoId";
+	
 }

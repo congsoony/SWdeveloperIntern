@@ -8,8 +8,8 @@ public class ProductPriceDaoSqls {
 			+ "product_price.price AS price, "
 			+ "product_price.price_type_name AS price_type_name, "
 			+ "product_price.product_id as product_id, product_price.id AS product_price_id "
-			+ "FROM product_price "
-			+ "JOIN display_info ON product_price.product_id = display_info.product_id "
+			+ "FROM display_info "
+			+ "JOIN product_price ON display_info.product_id = product_price.product_id "
 			+ "WHERE display_info.id=:displayInfoId";
 	
 }

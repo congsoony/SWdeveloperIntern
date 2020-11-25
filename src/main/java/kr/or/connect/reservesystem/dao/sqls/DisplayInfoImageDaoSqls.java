@@ -10,9 +10,9 @@ public class DisplayInfoImageDaoSqls {
 			+ "file_info.file_name AS file_name, "
 			+ "file_info.modify_date AS modify_date ,"
 			+ "file_info.save_file_name AS save_file_name "
-			+ "FROM display_info_image "
+			+ "FROM display_info "
+			+ "JOIN display_info_image ON display_info.id = display_info_image.display_info_id "
 			+ "JOIN file_info ON display_info_image.file_id= file_info.id "
-			+ "JOIN display_info ON display_info_image.display_info_id = display_info.id "
 			+ "WHERE display_info.id=:displayInfoId";
 	
 }

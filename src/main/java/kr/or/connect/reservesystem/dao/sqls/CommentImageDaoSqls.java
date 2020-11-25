@@ -11,12 +11,10 @@ public class CommentImageDaoSqls {
 			+ "reservation_info.id AS reservation_info_id, "
 			+ "reservation_user_comment.id AS reservation_user_comment_id, "
 			+ "file_info.save_file_name AS save_file_name "
-			+ "FROM reservation_user_comment_image "
+			+ "FROM reservation_user_comment "
+			+ "JOIN reservation_user_comment_image ON reservation_user_comment.id =reservation_user_comment_image.reservation_user_comment_id "
 			+ "JOIN file_info ON reservation_user_comment_image.file_id = file_info.id "
-			+ "JOIN reservation_user_comment ON reservation_user_comment_image.reservation_user_comment_id = reservation_user_comment.id "
 			+ "JOIN reservation_info ON reservation_info.id= reservation_user_comment.reservation_info_id "
-			+ "JOIN product ON reservation_info.product_id = product.id "
-			+ "JOIN display_info ON product.id= display_info.product_id "
 			+ "WHERE reservation_user_comment.id = :reservationUserCommentId";
 	
 }
