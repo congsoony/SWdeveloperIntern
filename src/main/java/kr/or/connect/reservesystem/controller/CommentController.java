@@ -27,27 +27,29 @@ public class CommentController {
 	private CommentImageService commentImageService;
 	@Autowired
 	private DisplayInfoService displayInfoService;
-	
+
 	@GetMapping
 	public Map<String, Object> getCategories(@RequestParam int displayInfoId) {
 
-		Map<String, Object> map = new HashMap<>();
-		List<Comment> list = commentService.getCommentList(displayInfoId);
-		
 		DisplayInfo item = displayInfoService.getDisplayInfo(displayInfoId);
-		double averageScore=commentService.getCommentAverage(displayInfoId);
-		List<Comment> comments = commentService.getCommentList(displayInfoId);
-		int totalCount=commentService.getCommentTotalCount(displayInfoId);
-		
-		for(Comment it:comments) {
-			
-			List<CommentImage> imglist=commentImageService.getCommentImageList(it.getCommentId());
-			it.setCommentImages(imglist);	
+
+		if (item == null) {// 잘못된 요청 처리
+			return null;
 		}
-		
-		
-		map.put("averageScore",averageScore);
-		map.put("totalCount",totalCount);
+
+		Map<String, Object> map = new HashMap<>();
+		double averageScore = commentService.getCommentAverage(displayInfoId);
+		List<Comment> comments = commentService.getCommentList(displayInfoId);
+		int totalCount = commentService.getCommentTotalCount(displayInfoId);
+
+		for (Comment it : comments) {
+
+			List<CommentImage> imgList = commentImageService.getCommentImageList(it.getCommentId());
+			it.setCommentImages(imgList);
+		}
+
+		map.put("averageScore", averageScore);
+		map.put("totalCount", totalCount);
 		map.put("comments", comments);
 		map.put("item", item);
 		return map;

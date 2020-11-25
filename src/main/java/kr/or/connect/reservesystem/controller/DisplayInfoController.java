@@ -39,29 +39,33 @@ public class DisplayInfoController {
 	private ProductPriceService productPriceService;
 	@Autowired
 	private DisplayInfoImageService displayInfoImageService;
-	
+
 	@GetMapping
-	public Map<String, Object> getDisplayInfo(
-			@RequestParam int displayInfoId) {
-		
+	public Map<String, Object> getDisplayInfo(@RequestParam int displayInfoId) {
+
 		DisplayInfo item = displayInfoService.getDisplayInfo(displayInfoId);
-		List<ProductImages> mainImages=productImagesService.getProductImagesList(displayInfoId,"ma");
-		List<ProductImages> etcImages=productImagesService.getProductImagesList(displayInfoId,"et");
-		
-		double averageScore=commentService.getCommentAverage(displayInfoId);
-		List<Comment> comments = commentService.getCommentLimitList(displayInfoId);
-		int totalCount=commentService.getCommentTotalCount(displayInfoId);
-		for(Comment it:comments) {
-			
-			List<CommentImage> imglist=commentImageService.getCommentImageList(it.getCommentId());
-			it.setCommentImages(imglist);	
+
+		if (item == null) {// 잘못된 요청 처리
+			return null;
 		}
+		List<ProductImages> mainImages = productImagesService.getProductImagesList(displayInfoId, "ma");
+		List<ProductImages> etcImages = productImagesService.getProductImagesList(displayInfoId, "et");
+
+		double averageScore = commentService.getCommentAverage(displayInfoId);
+		List<Comment> comments = commentService.getCommentLimitList(displayInfoId);
+		int totalCount = commentService.getCommentTotalCount(displayInfoId);
 		
-		List<ProductPrice> productPrices= productPriceService.getProductPriceList(displayInfoId);
+		for (Comment it : comments) {
+
+			List<CommentImage> imgList = commentImageService.getCommentImageList(it.getCommentId());
+			it.setCommentImages(imgList);
+		}
+
+		List<ProductPrice> productPrices = productPriceService.getProductPriceList(displayInfoId);
 		DisplayInfoImage displayInfoImage = displayInfoImageService.getDisplayInfoImage(displayInfoId);
-		
+
 		Map<String, Object> map = new HashMap<>();
-				
+
 		map.put("displayInfo", item);
 		map.put("mainImages", mainImages);
 		map.put("etcImages", etcImages);
@@ -70,7 +74,7 @@ public class DisplayInfoController {
 		map.put("productPrices", productPrices);
 		map.put("displayInfoImage", displayInfoImage);
 		map.put("totalCount", totalCount);
-		
+
 		return map;
 	}
 }
