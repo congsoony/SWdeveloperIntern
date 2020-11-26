@@ -12,13 +12,16 @@ detailObj.review={
         getData(url, this.getReviewInfo);
     },
 
+    
     getReviewInfo(jsonObj) {
-        detailObj.display.review(jsonObj.comments,jsonObj.averageScore,jsonObj.totalCount,jsonObj.item);
+        detailObj.comment.showComments(jsonObj);
     },
     btnSet(){
       var backBtn=document.querySelector("#btn_back");
       backBtn.addEventListener('click',function(){
         location.href="detail?"+"displayInfoId="+getParameterByName("displayInfoId");
       });
-    }
+    },
+    
+    
 }
