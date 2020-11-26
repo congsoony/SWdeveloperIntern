@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,12 +31,12 @@ public class CommentController {
 	private DisplayInfoService displayInfoService;
 
 	@GetMapping
-	public Map<String, Object> getCategories(@RequestParam int displayInfoId) {
+	public ResponseEntity<Map<String, Object>> getCategories(@RequestParam int displayInfoId) {
 
 		DisplayInfo item = displayInfoService.getDisplayInfo(displayInfoId);
 
 		if (item == null) {// 잘못된 요청 처리
-			return null;
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		Map<String, Object> map = new HashMap<>();
@@ -51,7 +53,7 @@ public class CommentController {
 		map.put("averageScore", averageScore);
 		map.put("totalCount", totalCount);
 		map.put("comments", comments);
-		map.put("item", item);
-		return map;
+		map.put("displayInfo", item);
+		return new ResponseEntity<>(map,HttpStatus.OK);
 	}
 }

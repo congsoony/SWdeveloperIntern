@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,12 +43,12 @@ public class DisplayInfoController {
 	private DisplayInfoImageService displayInfoImageService;
 
 	@GetMapping
-	public Map<String, Object> getDisplayInfo(@RequestParam int displayInfoId) {
+	public ResponseEntity<Map<String, Object>> getDisplayInfo(@RequestParam int displayInfoId) {
 
 		DisplayInfo item = displayInfoService.getDisplayInfo(displayInfoId);
 
 		if (item == null) {// 잘못된 요청 처리
-			return null;
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		List<ProductImages> mainImages = productImagesService.getProductImagesList(displayInfoId, "ma");
 		List<ProductImages> etcImages = productImagesService.getProductImagesList(displayInfoId, "et");
@@ -75,6 +77,6 @@ public class DisplayInfoController {
 		map.put("displayInfoImage", displayInfoImage);
 		map.put("totalCount", totalCount);
 
-		return map;
+		return new ResponseEntity<>(map,HttpStatus.OK);
 	}
 }
