@@ -14,12 +14,13 @@ detailObj.review={
 
     
     getReviewInfo(jsonObj) {
+        document.querySelector("#title").innerText=jsonObj.displayInfo.productDescription;
         detailObj.comment.showComments(jsonObj);
     },
     btnSet(){
-      var backBtn=document.querySelector("#btn_back");
-      backBtn.addEventListener('click',function(){
-        location.href="detail?"+"displayInfoId="+getParameterByName("displayInfoId");
+        var backBtn=document.querySelector("#btn_back");
+        backBtn.addEventListener('click',function(){
+        history.back();
       });
     },
     
