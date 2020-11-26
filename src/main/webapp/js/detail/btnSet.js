@@ -63,8 +63,8 @@ detailObj.btnSet = {
             var displayInfoId = getParameterByName("displayInfoId");
             location.href="review?"+"displayInfoId="+displayInfoId;
         });
-
-        reserveBtn.addEventListener('click()',()=>{
+        
+        reserveBtn.addEventListener('click',()=>{
             //pjt5에서 추가할것
         });
     },
