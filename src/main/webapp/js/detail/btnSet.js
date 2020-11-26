@@ -1,17 +1,13 @@
-detailObj.init = {
-    init() {
-        document.querySelector("#product_img").style.transition = "all 0.3s";
-        document.querySelector("#product_img").style.right = "0px";
-        detailObj.btnSet.buttonSetListener();
-    }
-}
 
 detailObj.btnSet = {
     detailInfo : document.querySelector("#detail_area_wrap"),
     locationInfo :  document.querySelector("#detail_location"),
 
     buttonSetListener() {
-    	
+        
+        document.querySelector("#product_img").style.transition = "all 0.3s";
+        document.querySelector("#product_img").style.right = "0px";
+
         var watchMoreBtn = document.querySelector("#watch_more");
         var watchLessBtn = document.querySelector("#watch_less");
         var rightBtn = document.querySelector("#click_nxt");
