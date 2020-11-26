@@ -15,6 +15,7 @@ detailObj.btnSet = {
         var introduceBtn = document.querySelector("#btn_detail_info");
         var comingBtn = document.querySelector("#btn_detail_coming");
         var reviewMoreBtn=document.querySelector("#btn_review_more");
+        var reserveBtn=document.querySelector("#reserve_btn");
 
         watchMoreBtn.addEventListener('click', () => {
             var content = document.querySelector("#content_summary");
@@ -61,6 +62,10 @@ detailObj.btnSet = {
         reviewMoreBtn.addEventListener('click',()=>{
             var displayInfoId = getParameterByName("displayInfoId");
             location.href="review?"+"displayInfoId="+displayInfoId;
+        });
+
+        reserveBtn.addEventListener('click()',()=>{
+            //pjt5에서 추가할것
         });
     },
 
