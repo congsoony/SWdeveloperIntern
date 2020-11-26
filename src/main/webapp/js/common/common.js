@@ -1,4 +1,3 @@
-var detailObj={};
 
 function goToTopEventListener(){
     var topButton =document.querySelector("#lnk_top");
