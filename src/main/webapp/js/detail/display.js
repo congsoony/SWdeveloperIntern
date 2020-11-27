@@ -3,7 +3,7 @@ detailObj.display = {
     introduceContent: document.querySelector("#introduce_content"),
     comingHtml : document.querySelector("#detail_location"),
 
-    showProductIamges() {
+    showProductImages() {
         var displayInfoId = getParameterByName("displayInfoId");
         var url = "api/displayinfo?displayInfoId=" + displayInfoId;
         getData(url, this.getDisplayInfo);
