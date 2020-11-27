@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded",()=> {
-    detailObj.btnSet.buttonSetListener();
+    detailObj.display.buttonSetListener();
     goToTopEventListener();
     detailObj.display.showProductImages();
 });
