@@ -6,26 +6,26 @@ detailObj.display = {
     locationInfo :  document.querySelector("#detail_location"),
 
     showProductImages() {
-        var displayInfoId = getParameterByName("displayInfoId");
-        var url = "api/displayinfo?displayInfoId=" + displayInfoId;
+        let displayInfoId = getParameterByName("displayInfoId");
+        const url = "api/displayinfo?displayInfoId=" + displayInfoId;
         getData(url, this.getDisplayInfo);
     },
     getDisplayInfo(jsonObj) {
         // 상품 내용보여주기
-        var displayInfoObj = jsonObj.displayInfo;
-        var productContent = document.querySelector("#content_summary_txt");
-        var bindTemplate = Handlebars.compile(productContent.innerHTML);
+        let displayInfoObj = jsonObj.displayInfo;
+        let productContent = document.querySelector("#content_summary_txt");
+        let bindTemplate = Handlebars.compile(productContent.innerHTML);
 
         productContent.innerHTML = bindTemplate(displayInfoObj);
         
         
         // 선택한 상품 이미지 & 제목
-        var imagesObj = jsonObj.mainImages;
+        let imagesObj = jsonObj.mainImages;
         imagesObj.forEach((item) => {
             item.productDescription = displayInfoObj.productDescription;
         });
-        var template = document.querySelector("#img_script_template").innerText;
-        var ultag = document.querySelector("#product_img");
+        let template = document.querySelector("#img_script_template").innerText;
+        let ultag = document.querySelector("#product_img");
         bindTemplate = Handlebars.compile(template); // bindTemplate은 메서드 즉 함수임
         // handlebars.compile이 반환하는게
         // 함수라서
@@ -40,7 +40,7 @@ detailObj.display = {
         
     },
     setComing(displayinfo,displayInfoImage){
-        var data={
+        let data={
             productDescription:displayinfo.productDescription,
             placeStreet : displayinfo.placeStreet,
             placeLot : displayinfo.placeLot,
@@ -49,7 +49,7 @@ detailObj.display = {
             telephone : displayinfo.telephone
         };
 
-        var bindTemplate = Handlebars.compile(document.querySelector("#coming_script_template").innerText);
+        let bindTemplate = Handlebars.compile(document.querySelector("#coming_script_template").innerText);
         this.comingHtml.innerHTML = bindTemplate(data);
     },
   
@@ -62,38 +62,38 @@ detailObj.display = {
         document.querySelector("#product_img").style.transition = "all 0.3s";
         document.querySelector("#product_img").style.right = "0px";
 
-        var watchMoreBtn = document.querySelector("#watch_more");
-        var watchLessBtn = document.querySelector("#watch_less");
-        var rightBtn = document.querySelector("#click_nxt");
-        var leftBtn = document.querySelector("#click_prev");
-        var introduceBtn = document.querySelector("#btn_detail_info");
-        var comingBtn = document.querySelector("#btn_detail_coming");
-        var reviewMoreBtn = document.querySelector("#btn_review_more");
-        var reserveBtn = document.querySelector("#reserve_btn");
+        let watchMoreBtn = document.querySelector("#watch_more");
+        let watchLessBtn = document.querySelector("#watch_less");
+        let rightBtn = document.querySelector("#click_nxt");
+        let leftBtn = document.querySelector("#click_prev");
+        let introduceBtn = document.querySelector("#btn_detail_info");
+        let comingBtn = document.querySelector("#btn_detail_coming");
+        let reviewMoreBtn = document.querySelector("#btn_review_more");
+        let reserveBtn = document.querySelector("#reserve_btn");
 
         watchMoreBtn.addEventListener('click', () => {
-            var content = document.querySelector("#content_summary");
+            let content = document.querySelector("#content_summary");
             content.className = "store_details";
             watchMoreBtn.style.display = "none";
             watchLessBtn.style.display = "block";
         });
 
         watchLessBtn.addEventListener('click', () => {
-            var content = document.querySelector("#content_summary");
+            let content = document.querySelector("#content_summary");
             content.className = "store_details close3";
             watchMoreBtn.style.display = "block";
             watchLessBtn.style.display = "none";
         });
 
         rightBtn.addEventListener('click', () => {
-            var imgHtml = document.querySelector("#product_img");
-            var curPage = parseInt(document.querySelector("#figure_num").dataset.num);
+            let imgHtml = document.querySelector("#product_img");
+            let curPage = parseInt(document.querySelector("#figure_num").dataset.num);
             this.rightClickAnimate(curPage, 2, imgHtml);
         });
 
         leftBtn.addEventListener('click', () => {
-            var imgHtml = document.querySelector("#product_img");
-            var curPage = parseInt(document.querySelector("#figure_num").dataset.num);
+            let imgHtml = document.querySelector("#product_img");
+            let curPage = parseInt(document.querySelector("#figure_num").dataset.num);
 
             this.leftClickAnimate(curPage, 2, imgHtml);
 
@@ -114,7 +114,7 @@ detailObj.display = {
         });
 
         reviewMoreBtn.addEventListener('click', () => {
-            var displayInfoId = getParameterByName("displayInfoId");
+            let displayInfoId = getParameterByName("displayInfoId");
             location.href = "review?" + "displayInfoId=" + displayInfoId;
         });
 
@@ -124,8 +124,8 @@ detailObj.display = {
     },
 
     rightClickAnimate(curPage, length, imgHtml) {
-        var figureNum = document.querySelector("#figure_num");
-        var text = parseInt(figureNum.innerText);
+        let figureNum = document.querySelector("#figure_num");
+        let text = parseInt(figureNum.innerText);
         if (curPage == length - 1) {
             setTimeout(() => {
                 imgHtml.style.transition = "all 0.3s";
@@ -148,7 +148,7 @@ detailObj.display = {
 
     leftClickAnimate(curPage, length, imgHtml) {
 
-        var figureNum = document.querySelector("#figure_num");
+        let figureNum = document.querySelector("#figure_num");
 
         if (curPage == 0) {
             setTimeout(() => {
@@ -178,10 +178,10 @@ detailObj.display = {
             document.querySelector("#click_prev").style.display = "none";
             return;
         }
-        var tempInnerHTML = ultag.innerHTML;
+        let tempInnerHTML = ultag.innerHTML;
         imagesObj[0].productDescription = productDescription;
-        var template = document.querySelector("#img_script_template").innerText;
-        var bindTemplate = Handlebars.compile(template);
+        let template = document.querySelector("#img_script_template").innerText;
+        let bindTemplate = Handlebars.compile(template);
         ultag.innerHTML += bindTemplate(imagesObj[0]);
         ultag.innerHTML += tempInnerHTML;
 

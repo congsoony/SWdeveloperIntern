@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded",()=> {
 
 detailObj.review={
     showReview(){
-        var displayInfoId = getParameterByName("displayInfoId");
-        var url = "api/comment?displayInfoId=" + displayInfoId;
+        let displayInfoId = getParameterByName("displayInfoId");
+        const url = "api/comment?displayInfoId=" + displayInfoId;
         getData(url, this.getReviewInfo);
     },
 
@@ -18,7 +18,7 @@ detailObj.review={
         detailObj.comment.showComments(jsonObj);
     },
     btnSet(){
-        var backBtn=document.querySelector("#btn_back");
+        let backBtn=document.querySelector("#btn_back");
         backBtn.addEventListener('click',function(){
         history.back();
       });
