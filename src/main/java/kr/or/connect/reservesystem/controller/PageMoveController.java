@@ -20,4 +20,9 @@ public class PageMoveController {
 	public String moveReview() {
 		return "review";
 	}
+	
+	@RequestMapping(path = "/reserve", method = RequestMethod.GET)
+	public String moveReserve() {
+		return "reserve";
+	}
 }

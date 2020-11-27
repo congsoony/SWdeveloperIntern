@@ -119,5 +119,4 @@ public class ReservationInfo {
 				+ ", reservationTelephone=" + reservationTelephone + ", totalPrice=" + totalPrice + "]";
 	}
 
-	
 }
