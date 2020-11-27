@@ -3,7 +3,7 @@ package kr.or.connect.reservesystem.dto;
 public class ProductPrice {
 
 	private String createDate;
-	private double number;
+	private double discountRate;
 	private String modifyDate;
 	private int price;
 	private String priceTypeName;
@@ -18,12 +18,12 @@ public class ProductPrice {
 		this.createDate = createDate;
 	}
 
-	public double getNumber() {
-		return number;
+	public double getDiscountRate() {
+		return discountRate;
 	}
 
-	public void setNumber(double number) {
-		this.number = number;
+	public void setDiscountRate(double discountRate) {
+		this.discountRate = discountRate;
 	}
 
 	public String getModifyDate() {
@@ -68,9 +68,11 @@ public class ProductPrice {
 
 	@Override
 	public String toString() {
-		return "ProductPrice [createDate=" + createDate + ", number=" + number + ", modifyDate=" + modifyDate
-				+ ", price=" + price + ", priceTypeName=" + priceTypeName + ", productId=" + productId
+		return "ProductPrice [createDate=" + createDate + ", discountRate=" + discountRate + ", modifyDate="
+				+ modifyDate + ", price=" + price + ", priceTypeName=" + priceTypeName + ", productId=" + productId
 				+ ", productPriceId=" + productPriceId + "]";
 	}
+	
+	
 
 }
