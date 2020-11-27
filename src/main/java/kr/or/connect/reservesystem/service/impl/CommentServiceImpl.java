@@ -48,10 +48,12 @@ public class CommentServiceImpl implements CommentService {
 		return commentDao.getCommentTotalCount(displayInfoId);
 	}
 
-	public static String makeEmailSecurity(String email) {
+	private String makeEmailSecurity(String email) {
 		String id = email.split("@")[0];
 		if (id.length() > 4) {
 			id = id.substring(0, 4);
+		} else {
+			id = id.substring(0,id.length()/2);
 		}
 		return id + "****";
 	}
