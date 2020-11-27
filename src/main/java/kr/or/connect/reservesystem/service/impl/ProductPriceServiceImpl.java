@@ -19,7 +19,48 @@ public class ProductPriceServiceImpl implements ProductPriceService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<ProductPrice> getProductPriceList(int displayInfoId) {
-		return productPriceDao.getProductPriceList(displayInfoId);
+		List<ProductPrice> list = productPriceDao.getProductPriceList(displayInfoId);
+		for (ProductPrice item : list) {
+			item.setPriceTypeName(setRenameType(item.getPriceTypeName()));
+		}
+		return list;
+	}
+
+	private String setRenameType(String name) {
+		String type = "";
+		switch (name) {
+		case "A":
+			type = "성인";
+			break;
+		case "Y":
+			type = "청소년";
+			break;
+		case "B":
+			type = "유아";
+			break;
+		case "S":
+			type = "셋트";
+			break;
+		case "D":
+			type = "장애인";
+			break;
+		case "C":
+			type = "지역주민";
+			break;
+		case "E":
+			type = "어얼리버드";
+			break;
+		case "V":
+			type = "VIP";
+			break;
+		case "R":
+			type = "R석";
+			break;
+		default:
+			type = name + "석";
+			break;
+		}
+		return type;
 	}
 
 }
