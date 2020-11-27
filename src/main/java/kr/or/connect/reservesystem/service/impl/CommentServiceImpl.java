@@ -19,18 +19,18 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Comment> getCommentList(int displayInfoId) {
-		List<Comment> list=commentDao.getCommentList(displayInfoId);
-		for(Comment item:list) {
+		List<Comment> list = commentDao.getCommentList(displayInfoId);
+		for (Comment item : list) {
 			item.setReservationEmail(makeEmailSecurity(item.getReservationEmail()));
 		}
 		return list;
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Comment> getCommentLimitList(int displayInfoId) {
-		List<Comment> list=commentDao.getCommentLimitList(displayInfoId);
-		for(Comment item:list) {
+		List<Comment> list = commentDao.getCommentLimitList(displayInfoId);
+		for (Comment item : list) {
 			item.setReservationEmail(makeEmailSecurity(item.getReservationEmail()));
 		}
 		return list;
@@ -47,12 +47,13 @@ public class CommentServiceImpl implements CommentService {
 	public int getCommentTotalCount(int displayInfoId) {
 		return commentDao.getCommentTotalCount(displayInfoId);
 	}
-	
+
 	public static String makeEmailSecurity(String email) {
-		String id =email.split("@")[0];
-		if(id.length()>4) {
-			id=id.substring(0,4);
+		String id = email.split("@")[0];
+		if (id.length() > 4) {
+			id = id.substring(0, 4);
 		}
-		return id+"****";
+		return id + "****";
 	}
+
 }
