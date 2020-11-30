@@ -125,7 +125,6 @@ detailObj.display = {
 
     rightClickAnimate(curPage, length, imgHtml) {
         let figureNum = document.querySelector("#figure_num");
-        let text = parseInt(figureNum.innerText);
         if (curPage == length - 1) {
             setTimeout(() => {
                 imgHtml.style.transition = "all 0.3s";
@@ -147,9 +146,7 @@ detailObj.display = {
     },
 
     leftClickAnimate(curPage, length, imgHtml) {
-
         let figureNum = document.querySelector("#figure_num");
-
         if (curPage == 0) {
             setTimeout(() => {
                 imgHtml.style.transition = "all 0s";
