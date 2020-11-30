@@ -1,18 +1,16 @@
 let reserveObj={};
-document.addEventListener("DOMContentLoaded",()=> {
-    goToTopEventListener();
-});
-
 
 document.addEventListener("DOMContentLoaded",()=> {
     goToTopEventListener();
     reserveObj.reserve.buttonSetListener();
     reserveObj.reserve.showReserveInfo();
+    reserveObj.reserveForm.setFormClickListener();
 });
 
 reserveObj.reserve={
     ticketHtml :document.getElementById("ticket_body"),
-
+    checkBox : document.getElementById("chk3"),
+    reserveBtn:document.getElementById("bk_btn"),
     showReserveInfo(){
         const url = "api/reserve?displayInfoId=" + getParameterByName("displayInfoId");
         getData(url, this.getReserveInfo);
@@ -72,6 +70,7 @@ reserveObj.reserve={
             let num=parseInt(input.value);
             let price=parseInt(priceNode.dataset.price);
             let totalCount=document.getElementById("totalCount");
+            let allAgree=document.getElementById("all_agreement");
             if(target.title=="더하기"){
             	num++;
             	totalCount.innerText=parseInt(totalCount.innerText)+1;
@@ -81,6 +80,7 @@ reserveObj.reserve={
             		totalCount.innerText=parseInt(totalCount.innerText)-1;
             	}
             }
+            
             if(num>0){
             	input.className="count_control_input";
             	priceColorNode.className="individual_price on_color";
@@ -94,5 +94,124 @@ reserveObj.reserve={
             totalPrice.innerText=num*price;
             input.value=num;
         });
-    }
+
+        this.checkBox.addEventListener('click',()=>{
+            let colorBtn=document.getElementById("bk_btn_parent");
+            if(this.checkBox.checked){
+                colorBtn.className="bk_btn_wrap";
+            } else{
+                colorBtn.className="bk_btn_wrap disable"
+            }
+        });
+
+        this.reserveBtn.addEventListener('click',()=>{
+            if(this.checkBox.checked==false){
+                return;
+            }
+            let nameInput=document.getElementById("name");
+            let telInput=document.getElementById("tel");
+            let emailInput=document.getElementById("email");
+            let totalCount=document.getElementById("totalCount");
+            let flag=true;
+            if(nameInput.dataset.flag!="1"){
+                let msg = nameInput.parentNode.querySelector(".warning_msg");
+                msg.style.visibility="visible";
+                flag=false;   
+            }
+            if(telInput.dataset.flag!="1"){
+                let msg = telInput.parentNode.querySelector(".warning_msg");
+                msg.style.visibility="visible";
+                flag=false;
+            }
+            if(emailInput.dataset.flag!="1"){
+                let msg = emailInput.parentNode.querySelector(".warning_msg");
+                msg.style.visibility="visible";
+                flag=false;
+            }
+            if(totalCount.innerText=="0"){
+                alert("1개이상 예매를 해주셔야합니다.");
+                flag=false;
+            }
+        });
+    },
+    
 }
+
+reserveObj.reserveForm={
+    setFormClickListener(){
+        let msg=document.querySelectorAll(".warning_msg");
+        msg.forEach((item)=>{
+            item.addEventListener('click',(evt)=>{
+                evt.currentTarget.style.visibility="hidden";
+            })
+        });
+        this.agreementForm();
+    },
+
+    nameForm(evt){
+        let target = evt.currentTarget;
+        const value= target.value;
+        let msg = target.parentNode.querySelector(".warning_msg");
+        if(value.length>0){
+            msg.style.visibility="hidden";
+            target.dataset.flag=1;//형식에 맞음
+        } else {
+            msg.style.visibility="visible";
+            target.dataset.flag=0;//형섹이 안맞음
+        }
+    },
+    telForm(evt){
+        let target = evt.currentTarget;
+        const value= target.value;
+        const result = value.match(/010-\d{4}-\d{4}/);
+        let msg = target.parentNode.querySelector(".warning_msg");
+        if(result){
+            if(value.length==13){
+                msg.style.visibility="hidden";
+                target.dataset.flag=1;
+            } else{
+                msg.style.visibility="visible";    
+                target.dataset.flag=0;
+            }
+    
+        } else {
+            msg.style.visibility="visible";
+        }
+    
+    },
+    
+    emailForm(evt){
+        let target = evt.currentTarget;
+        const value= target.value;
+        const result = value.match(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+        let msg = target.parentNode.querySelector(".warning_msg");
+        if(result){
+            msg.style.visibility="hidden";
+            target.dataset.flag=1;
+        } else {
+            msg.style.visibility="visible";
+            target.dataset.flag=0;
+        }
+    
+    },
+    
+    agreementForm(){
+        let watchAgreeBtn1=document.getElementById("watch_agree1");
+        let watchAgreeBtn2=document.getElementById("watch_agree2");
+        
+        watchAgreeBtn1.addEventListener('click',this.clickAgreement);
+        watchAgreeBtn2.addEventListener('click',this.clickAgreement);
+    },
+    clickAgreement(evt){
+        let text = evt.currentTarget.querySelector("span");
+        let openClose = evt.currentTarget.closest("div");
+        if (text.innerText == "보기") {
+            openClose.className = "agreement open";
+            text.innerText = "접기";
+        } else {
+            openClose.className = "agreement";
+            text.innerText = "보기";
+        }
+    },
+    
+};
