@@ -119,7 +119,8 @@ detailObj.display = {
         });
 
         reserveBtn.addEventListener('click', () => {
-            //pjt5에서 추가할것
+        	let displayInfoId = getParameterByName("displayInfoId");
+        	location.href="reserve?"+"displayInfoId="+displayInfoId;
         });
     },
 
