@@ -238,7 +238,6 @@
 	<script src="js/common/common.js"></script>
 	<script src="js/detail/comment.js"></script>
 	<script src="js/detail/display.js"></script>
-	<script src="js/detail/btnSet.js"></script>
 	<script src="js/detail/detail.js"></script>
 </body>
 

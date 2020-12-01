@@ -1,1 +1,1 @@
-var detailObj={};
+let detailObj={};
