@@ -70,7 +70,6 @@ reserveObj.reserve={
             let num=parseInt(input.value);
             let price=parseInt(priceNode.dataset.price);
             let totalCount=document.getElementById("totalCount");
-            let allAgree=document.getElementById("all_agreement");
             if(target.title=="더하기"){
             	num++;
             	totalCount.innerText=parseInt(totalCount.innerText)+1;
