@@ -88,8 +88,8 @@
     </script>
 
 	<script type="rv-template" id="itemList">
-        <li class="item">
-            <a href="detail.html?id={displayInfoId}" class="item_book">
+        <li class="item" data-displayinfoid="{displayInfoId}">
+            <a class="item_book">
                 <div class="item_preview">
                     <img alt="{productDescription}" class="img_thumb" src="{productImageUrl}">
                     <span class="img_border"></span>
@@ -101,7 +101,7 @@
             </a>
         </li>
     </script>
-    <script src="js/init/init.js"></script>
+    <script src="js/common/common.js"></script>
 	<script src="js/mainpage.js"></script>
 	<script src="js/promotion.js"></script>
 	<script src="js/product.js"></script>

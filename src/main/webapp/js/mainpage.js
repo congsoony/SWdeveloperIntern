@@ -4,23 +4,9 @@ document.addEventListener("DOMContentLoaded",()=> {
 	getCategories();
 	btnClickMore();
 	goToTopEventListener();
+	productDetatilClickListener();
 });
 
-function getData(url, fun) {
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = ()=> {
-		if (xhr.readyState === xhr.DONE) {
-			if (xhr.status === 200 || xhr.status === 201) {
-				var jsonObj = JSON.parse(xhr.responseText);
-				fun(jsonObj);
-			} else {
-				console.error(xhr.responseText);
-			}
-		}
-	};
-	xhr.open("GET", url);
-	xhr.send();
-}
 
 function btnClickMore(categoryId){
 	var btn=document.querySelector(".btn");
@@ -34,4 +20,28 @@ function btnClickMore(categoryId){
 		var url="api/products?categoryId="+curCategoryId+"&start="+start;
 		getData(url,showAddProducts);
 	});
+}
+
+function productDetatilClickListener(){
+	var productHtml = document.querySelector(".wrap_event_box");
+	productHtml.addEventListener('click',(evt)=>{
+	
+		var nodeName=evt.target.nodeName;
+		if(nodeName==="SPAN"&&evt.target.parentNode.nodeName==="BUTTON"){
+			return;
+		}
+		if(nodeName==="DIV"||nodeName==="UL"||nodeName==="BUTTON"){
+			return;
+		}
+		
+		var litag = evt.target.closest("li");
+		var displayInfoId = litag.dataset.displayinfoid;
+		if(displayInfoId===null || displayInfoId===undefined){
+			return; 
+		}
+
+		location.href="detail?"+"displayInfoId="+displayInfoId;
+		
+	});
+
 }
