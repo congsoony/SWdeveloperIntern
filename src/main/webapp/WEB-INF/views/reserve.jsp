@@ -65,15 +65,15 @@
                         <div class="form_wrap">
                             <h3 class="out_tit">예매자 정보</h3>
                             <div class="agreement_nessasary help_txt"> <span class="spr_book ico_nessasary"></span> <span>필수입력</span> </div>
-                            <form class="form_horizontal" id="reserve_form">
+                            <form class="form_horizontal" id="reserve_form" method="post" action="api/reserve">
                                 <div class="inline_form"> <label class="label" for="name"> <span class="spr_book ico_nessasary">필수</span> <span>예매자</span> </label>
                                     <div class="inline_control tel_wrap"> <input type="text" name="name" id="name" class="text" placeholder="네이버" maxlength="17" required onchange="reserveObj.reserveForm.nameForm(event)" data-flag="0"> 
-                                    <div class="warning_msg" id="email_warning">예매자의 이름을 넣어주시기바랍니다.</div>
+                                    <div class="warning_msg" id="email_warning">영문 또는 한글로 작성해주세요</div>
                                     </div>                                </div>
                                 <div class="inline_form"> <label class="label" for="tel"> <span class="spr_book ico_nessasary">필수</span> <span>연락처</span> </label>
                                     <div class="inline_control tel_wrap">
                                         <input type="tel" name="tel" id="tel" class="tel" value="" placeholder="휴대폰 입력 시 예매내역 문자발송" onchange="reserveObj.reserveForm.telForm(event)" data-flag="0" required>
-                                        <div class="warning_msg" id="tel_warning">(010-xxxx-xxxx)형식이 다르거나 길이가 맞지않습니다.</div>
+                                        <div class="warning_msg" id="tel_warning">전화번호 형식으로 맞지않습니다.</div>
                                     </div>
                                 </div>
                                 <div class="inline_form"> <label class="label" for="email">  <span class="spr_book ico_nessasary">필수</span>  <span>이메일</span> </label>
