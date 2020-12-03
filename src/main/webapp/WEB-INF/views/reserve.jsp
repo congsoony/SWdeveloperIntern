@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="inline_form last"> <label class="label" for="message">예매내용</label>
                                     <div class="inline_control">
-                                        <p class="inline_txt selected">2017.2.17, 총 <span id="totalCount">0</span>매</p>
+                                        <p class="inline_txt selected"><span id="current_date">2017.2.17, 총 </span><span id="totalCount">0</span>매</p>
                                     </div>
                                 </div>
                             </form>
@@ -121,7 +121,7 @@
   
     <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
       <script type="rv-template" id="count_script_template">
-        <div class="qty">
+        <div class="qty" data-productPriceId="{{productPriceId}}">
             <div class="count_control">
                 <!-- [D] 수량이 최소 값이 일때 ico_minus3, count_control_input에 disabled 각각 추가, 수량이 최대 값일 때는 ico_plus3에 disabled 추가 -->
                 <div class="clearfix">
