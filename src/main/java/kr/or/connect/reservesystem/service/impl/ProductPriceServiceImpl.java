@@ -21,46 +21,29 @@ public class ProductPriceServiceImpl implements ProductPriceService {
 	public List<ProductPrice> getProductPriceList(int displayInfoId) {
 		List<ProductPrice> list = productPriceDao.getProductPriceList(displayInfoId);
 		for (ProductPrice item : list) {
-			item.setPriceTypeName(setRenameType(item.getPriceTypeName()));
+			RenameType type;
+			try {
+				type = RenameType.valueOf(item.getPriceTypeName());
+				item.setPriceTypeName(type.getName());
+			} catch (Exception e) {// 열거형에 없을경우 기존이름 +석
+				item.setPriceTypeName(item.getPriceTypeName() + "석");
+			}
 		}
 		return list;
 	}
 
-	private String setRenameType(String name) {
-		String type = "";
-		switch (name) {
-		case "A":
-			type = "성인";
-			break;
-		case "Y":
-			type = "청소년";
-			break;
-		case "B":
-			type = "유아";
-			break;
-		case "S":
-			type = "셋트";
-			break;
-		case "D":
-			type = "장애인";
-			break;
-		case "C":
-			type = "지역주민";
-			break;
-		case "E":
-			type = "어얼리버드";
-			break;
-		case "V":
-			type = "VIP";
-			break;
-		case "R":
-			type = "R석";
-			break;
-		default:
-			type = name + "석";
-			break;
-		}
-		return type;
-	}
+	private enum RenameType {
+		A("성인"), Y("청소년"), B("유아"), S("셋트"), D("장애인"), C("지역주민"), E("어얼리버드"), V("VIP"), R("R석");
 
+		private String name;
+
+		public String getName() {
+			return name;
+		}
+
+		private RenameType(String name) {
+			this.name = name;
+		}
+
+	}
 }
