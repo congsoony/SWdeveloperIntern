@@ -9,6 +9,9 @@ public class ReserveDaoSqls {
 			+ "product_price_id, "
 			+ "count) "
 			+ "VALUES(:reservationInfoId,:productPriceId,:count)";
+	public static final String SELECT_EXIST_BY_EMAIL="SELECT EXISTS "
+			+ "(SELECT * FROM  reservation_info "
+			+ "WHERE reservation_email=:reservationEmail) as count";
 			
 	
 }
