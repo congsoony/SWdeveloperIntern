@@ -1,5 +1,3 @@
-let reserveObj={};
-
 document.addEventListener("DOMContentLoaded",()=> {
     goToTopEventListener();
     reserveObj.reserve=new reserve();
