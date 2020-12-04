@@ -6,23 +6,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class PageMoveController {
-	@RequestMapping(path = "/mainpage",method = RequestMethod.GET)
+	@RequestMapping(path = "/mainpage", method = RequestMethod.GET)
 	public String moveMainPage() {
 		return "mainpage";
 	}
-	
-	@RequestMapping(path = "/detail",method = RequestMethod.GET)
+
+	@RequestMapping(path = "/detail", method = RequestMethod.GET)
 	public String moveDtatil() {
 		return "detail";
 	}
-	
-	@RequestMapping(path = "/review",method = RequestMethod.GET)
+
+	@RequestMapping(path = "/review", method = RequestMethod.GET)
 	public String moveReview() {
 		return "review";
 	}
-	
+
 	@RequestMapping(path = "/reserve", method = RequestMethod.GET)
 	public String moveReserve() {
 		return "reserve";
+	}
+
+	@RequestMapping(path = "/bookinglogin", method = RequestMethod.GET)
+	public String moveBookingLogin() {
+		return "bookinglogin";
 	}
 }
