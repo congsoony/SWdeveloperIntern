@@ -16,27 +16,25 @@ public class ReserveServiceImpl implements ReserveService {
 
 	@Autowired
 	ReserveDao reserveDao;
-	
+
 	@Override
 	@Transactional(readOnly = false)
-	public ReserveInfo insertReservationInfo(ReserveInfo reserveInfo) throws Exception{
-		List<ReservationInfoPrice> list=reserveInfo.getReservationInfoPrices();
-		if(list.size()==0) {
+	public ReserveInfo insertReservationInfo(ReserveInfo reserveInfo) throws Exception {
+
+		int reservationInfoId = reserveDao.insertReservationInfo(reserveInfo);
+		reserveInfo.setReservationInfoId(reservationInfoId);
+		List<ReservationInfoPrice> list = reserveInfo.getReservationInfoPrices();
+		if (list.size() == 0) {
 			throw new RuntimeException();
 		}
-		for(ReservationInfoPrice item:list) {
-			int reservationInfoPriceId=reserveDao.insertReservationInfoPrice(item);
+
+		for (ReservationInfoPrice item : list) {
+			item.setReservationInfoId(reservationInfoId);//reservationinfoid 값 insert한것 넣어줘야함 
+			int reservationInfoPriceId = reserveDao.insertReservationInfoPrice(item);
 			item.setProductPriceId(reservationInfoPriceId);
 		}
-		
-		
-		int reserveInfoId = reserveDao.insertReservationInfo(reserveInfo);
-		reserveInfo.setDisplayInfoId(reserveInfoId);
 		reserveInfo.setReservationInfoPrices(list);
-		
 		return reserveInfo;
 	}
-
-	
 
 }
