@@ -30,4 +30,9 @@ public class PageMoveController {
 	public String moveBookingLogin() {
 		return "bookinglogin";
 	}
+
+	@RequestMapping(path = "/myreservation", method = RequestMethod.GET)
+	public String moveMyReservation() {
+		return "myreservation";
+	}
 }

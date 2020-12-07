@@ -25,14 +25,12 @@ public class BookingLoginController {
 	@GetMapping
 	public ResponseEntity<Object> BookingLogin(@RequestParam String emailId, HttpServletResponse response) {
 		boolean isLogin = bookingLoginService.hasEmailId(emailId);
-		System.out.println(isLogin);
 		if (!isLogin) {
 			// 없는 이메일 로그인 불가
 			return new ResponseEntity<>("false", HttpStatus.OK);
 		}
 		// 쿠키를 전송한다.
 		Cookie cookie = new Cookie("email", emailId);
-		cookie.setMaxAge(-1); // 브라우저 종료될때까지
 		cookie.setPath("/"); // / 경로 이하에 모두 쿠키 적용.
 		response.addCookie(cookie);
 		return new ResponseEntity<>("true", HttpStatus.OK);
