@@ -1,4 +1,4 @@
-let myReserveObj=null;
+
 document.addEventListener("DOMContentLoaded",()=> {
     myReserveObj=new MyReservation();
     myReserveObj.hasCookie();
@@ -166,20 +166,27 @@ MyReservation.prototype={
         this.emptyTag.style.display="none";
     },
     clickCancel:function(event){
-        debugger;
         let target =event.currentTarget;
         let article = target.closest("article")
         let reservationInfoId= target.dataset.reservationinfoid;
      
+        //이용예정을 취소쪽으로 옮김
         target.style.display="none";
         this.cardCancelLiTag.style.display="block";
         this.cardCancelLiTag.appendChild(article);
 
+        putData("api/myreservation?reservationInfoId="+reservationInfoId);
+        
         let expectCountTag=document.getElementById("reservation_expect_count");
-        expectCountTag.innerText=parseInt(expectCountTag.innerText)-1;
+        let num=parseInt(expectCountTag.innerText);
+        expectCountTag.innerText=--num;
+
+
+        if(num==0){//이용예정이 없을경우 더이상보이지 않음
+            this.cardConfirmedLiTag.style.display="none";
+        }
         let cancelCountTag=document.getElementById("reservation_cancel_count");
         cancelCountTag.innerText=parseInt(cancelCountTag.innerText)+1;
-        putData("api/myreservation?reservationInfoId="+reservationInfoId);
     }
 }
 

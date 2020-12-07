@@ -312,7 +312,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"
 			integrity="sha512-fujQJs+fkj7+Az7XKDxMLbVuuaeljjqMQDh3TAI7nYKQMQhEztrmyuex6hlnRuttjXJ9BFvnl4r/t8r8L6gFfA=="
 			crossorigin="anonymous"></script>
-		
+		<script src="js/myreservation/myReserveObj.js"></script>
 		<script src="js/common/common.js"></script>
 		<script src="js/myreservation/myreservation.js"></script>
 
