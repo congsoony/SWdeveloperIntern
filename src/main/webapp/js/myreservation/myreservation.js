@@ -82,7 +82,10 @@ MyReservation.prototype={
         if(this.cancelList.length>0){
             this.cardCancelLiTag.style.display="block";
         }     
-          
+        document.getElementById("review_btn").addEventListener('click',(evt)=>{
+            //pjt6에서 작성할것
+            
+        });
     },
 
     showMyList : function(jsonObj){
