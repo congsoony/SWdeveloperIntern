@@ -29,7 +29,7 @@ public class ReserveServiceImpl implements ReserveService {
 		}
 
 		for (ReservationInfoPrice item : list) {
-			item.setReservationInfoId(reservationInfoId);//reservationinfoid 값 insert한것 넣어줘야함 
+			item.setReservationInfoId(reservationInfoId);// reservationinfoid 값 insert한것 넣어줘야함
 			int reservationInfoPriceId = reserveDao.insertReservationInfoPrice(item);
 			item.setProductPriceId(reservationInfoPriceId);
 		}

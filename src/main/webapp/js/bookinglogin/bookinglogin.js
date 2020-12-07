@@ -33,7 +33,7 @@ Login.prototype={
                         alert("예약건수가 없는 이메일입니다.");
                         return;
                     }
-                    location.href="mainpage";
+                    location.href="myreservation";
                 } else if(xhr.status === 400|| xhr.status===500){
                     alert("잘못된 경로를 탐색하였습니다. 올바른 값을 입력해주세요");
                     location.href="mainpage";
