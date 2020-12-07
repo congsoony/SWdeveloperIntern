@@ -31,4 +31,12 @@ public class ProductPriceDao {
 
 		return jdbc.query(SELECT_BY_DISPLAY_INFO_ID, params, rowMapper);
 	}
+	
+	public List<ProductPrice> getProductPrices(int reservationInfoId) {
+		Map<String, Integer> params = new HashMap<>();
+
+		params.put("reservationInfoId", reservationInfoId);
+
+		return jdbc.query(SELECT_BY_RESERVATION_INFO_ID, params, rowMapper);
+	}
 }

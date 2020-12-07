@@ -1,5 +1,7 @@
 package kr.or.connect.reservesystem.dto;
 
+import kr.or.connect.reservesystem.config.enums.RenameType;
+
 public class ProductPrice {
 
 	private String createDate;
@@ -9,6 +11,7 @@ public class ProductPrice {
 	private String priceTypeName;
 	private int productId;
 	private int productPriceId;
+	private int count;
 
 	public String getCreateDate() {
 		return createDate;
@@ -47,7 +50,7 @@ public class ProductPrice {
 	}
 
 	public void setPriceTypeName(String priceTypeName) {
-		this.priceTypeName = priceTypeName;
+		this.priceTypeName = RenameType.lookUp(priceTypeName);
 	}
 
 	public int getProductId() {
@@ -66,13 +69,19 @@ public class ProductPrice {
 		this.productPriceId = productPriceId;
 	}
 
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductPrice [createDate=" + createDate + ", discountRate=" + discountRate + ", modifyDate="
 				+ modifyDate + ", price=" + price + ", priceTypeName=" + priceTypeName + ", productId=" + productId
-				+ ", productPriceId=" + productPriceId + "]";
+				+ ", productPriceId=" + productPriceId + ", count=" + count + "]";
 	}
-	
-	
 
 }

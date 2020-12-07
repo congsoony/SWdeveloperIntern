@@ -50,8 +50,6 @@ public class ReserveController {
 
 	@PostMapping
 	public ResponseEntity<Object> reserveInfo(@RequestBody ReserveInfo reserveInfo) throws Exception{
-		System.out.println(reserveInfo);
-		System.out.println(reserveInfo.getReservationInfoPrices().size());
 		try {
 			reserveService.insertReservationInfo(reserveInfo);
 		} catch(Exception e) {
