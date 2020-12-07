@@ -20,7 +20,7 @@ public class BookingLoginDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public boolean hasEmailId(String email) {
+	public boolean existEmailId(String email) {
 		Map<String, String> params = new HashMap<>();
 		params.put("reservationEmail", email);
 		return jdbc.queryForObject(SELECT_EXIST_BY_EMAIL, params, Boolean.class);

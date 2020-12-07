@@ -24,7 +24,7 @@ public class BookingLoginController {
 
 	@GetMapping
 	public ResponseEntity<Object> BookingLogin(@RequestParam String emailId, HttpServletResponse response) {
-		boolean isLogin = bookingLoginService.hasEmailId(emailId);
+		boolean isLogin = bookingLoginService.existEmailId(emailId);
 		if (!isLogin) {
 			// 없는 이메일 로그인 불가
 			return new ResponseEntity<>("false", HttpStatus.OK);

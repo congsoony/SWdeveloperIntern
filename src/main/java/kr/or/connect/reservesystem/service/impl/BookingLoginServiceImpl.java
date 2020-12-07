@@ -16,8 +16,8 @@ public class BookingLoginServiceImpl implements BookingLoginService{
 	
 	@Override
 	@Transactional(readOnly = true)
-	public boolean hasEmailId(String email) {
-		return bookingLoginDao.hasEmailId(email);
+	public boolean existEmailId(String email) {
+		return bookingLoginDao.existEmailId(email);
 	}
 	
 	
