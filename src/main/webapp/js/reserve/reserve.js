@@ -64,8 +64,8 @@ reserve.prototype.setPlusMinusButtons=function(){
             if(target.nodeName!="A"){
                 return;
             }
+
             let qty=target.closest(".qty");
-            let nodeMinusPluse=qty.querySelectorAll("A");
             let totalPrice=qty.querySelector(".total_price");
             let priceNode=qty.querySelector(".price");
             let priceColorNode=totalPrice.parentNode;
@@ -73,26 +73,38 @@ reserve.prototype.setPlusMinusButtons=function(){
             let num=parseInt(input.value);
             let price=parseInt(priceNode.dataset.price);
             let totalCount=document.getElementById("totalCount");
+            let isPlus=false;
+
             if(target.title=="더하기"){
-                num++;
-                totalCount.innerText=parseInt(totalCount.innerText)+1;
+                isPlus=true;
+                if (num < 10) {//최대갯수 추가
+                    num++;
+                    totalCount.innerText = parseInt(totalCount.innerText) + 1;
+                }
             } else {
                 if(num>0){
                     num--;
                     totalCount.innerText=parseInt(totalCount.innerText)-1;
+                    target.nextElementSibling.nextElementSibling.classList.remove("disabled");
                 }
             }
             
             if(num>0){
-                input.className="count_control_input";
-                priceColorNode.className="individual_price on_color";
-                nodeMinusPluse[0].className="btn_plus_minus spr_book2 ico_minus3";
+                input.classList.remove("disabled");
+                priceColorNode.classList.add("on_color");
+                target.classList.remove("disabled");
             }
             else{
-                input.className="count_control_input disabled";
-                priceColorNode.className="individual_price";
-                nodeMinusPluse[0].className="btn_plus_minus spr_book2 ico_minus3 disabled";
+                input.classList.add("disabled");
+                priceColorNode.classList.remove("on_color");
+                target.classList.add("disabled");
             }
+
+            if(isPlus&&num>=10){
+                target.classList.add("disabled");
+            }
+
+
             totalPrice.innerText=num*price;
             input.value=num;
         });
@@ -105,9 +117,9 @@ reserve.prototype.buttonSetListener=function(){
     this.checkBox.addEventListener('click',()=>{
         let colorBtn=document.getElementById("bk_btn_parent");
         if(this.checkBox.checked){
-            colorBtn.className="bk_btn_wrap";
+            colorBtn.classList.remove("disable");
         } else{
-            colorBtn.className="bk_btn_wrap disable"
+            colorBtn.classList.add("disable");
         }
     });
 
@@ -182,7 +194,7 @@ function reserveForm(){
 reserveForm.prototype.setFormClickListener=function(){
     let msg=document.querySelectorAll(".warning_msg");
     msg.forEach((item)=>{
-        item.addEventListener('mouseover',(evt)=>{
+        item.addEventListener('click',(evt)=>{
             evt.currentTarget.style.visibility="hidden";
         })
     });
@@ -244,10 +256,10 @@ reserveForm.prototype.clickAgreement=function(evt){
     let text = evt.currentTarget.querySelector("span");
     let openClose = evt.currentTarget.closest("div");
     if (text.innerText == "보기") {
-        openClose.className = "agreement open";
+        openClose.classList.add("open");
         text.innerText = "접기";
     } else {
-        openClose.className = "agreement";
+        openClose.classList.remove("open");
         text.innerText = "보기";
     }
 }
