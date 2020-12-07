@@ -34,8 +34,8 @@ Login.prototype={
                         return;
                     }
                     location.href="myreservation";
-                } else if(xhr.status === 400|| xhr.status===500){
-                    alert("잘못된 경로를 탐색하였습니다. 올바른 값을 입력해주세요");
+                } else if(xhr.status === 400){
+                    alert("알수없는 정보를 요청하셨습니다.");
                     location.href="mainpage";
                 } else if(xhr.status === 403){
                     alert("권한을 가지고 있지않습니다.");
