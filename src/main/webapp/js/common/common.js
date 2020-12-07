@@ -76,6 +76,10 @@ function putData(url) {
 		if (xhr.readyState === xhr.DONE) {
 			if (xhr.readyState === xhr.DONE) {
 				if (xhr.status === 200 || xhr.status === 201) {;
+					if(xhr.responseText=="false"){
+						alert("잘못된 오류가 발생했습니다. 다시 시도해주세요");
+						location.href="myreservation";
+					}
 				} else if(xhr.status === 400|| xhr.status===500){
 					alert("잘못된 경로를 탐색하였습니다. 올바른 값을 입력해주세요");
 					location.href="mainpage";
