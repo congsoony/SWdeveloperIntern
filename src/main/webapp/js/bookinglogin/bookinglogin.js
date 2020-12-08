@@ -1,15 +1,15 @@
 
 document.addEventListener("DOMContentLoaded",()=> {
     goToTopEventListener();
-    let login=new Login();
+    let login = new Login();
     login.loginProcess();
 });
 
 function Login(){
-    this.loginBtn=document.getElementById("submit_btn");
-    
+    this.loginBtn = document.getElementById("submit_btn");
 }
-Login.prototype={
+
+Login.prototype = {
     loginProcess: function() {
         this.loginBtn.addEventListener('click', () => {
             let emailInput = document.getElementById("email_id");
@@ -25,7 +25,7 @@ Login.prototype={
     },
     loginGetAjax:function(url) {
         let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = ()=> {
+        xhr.onreadystatechange = () => {
             if (xhr.readyState === xhr.DONE) {
                 if (xhr.status === 200 || xhr.status === 201) {
                     let flag = xhr.responseText;
@@ -34,15 +34,9 @@ Login.prototype={
                         return;
                     }
                     location.href="myreservation";
-                } else if(xhr.status === 400){
-                    alert("알수없는 정보를 요청하셨습니다.");
-                    location.href="mainpage";
-                } else if(xhr.status === 403){
-                    alert("권한을 가지고 있지않습니다.");
-                } else if(xhr.status === 404){
-                    alert("없는 리소스입니다.");
                 } else {
                     alert("서버를 요청할수가 없습니다.");
+                    location.href="mainpage";
                 }
             }
         };
