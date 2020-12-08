@@ -18,7 +18,7 @@ public class ReserveServiceImpl implements ReserveService {
 	ReserveDao reserveDao;
 
 	@Override
-	@Transactional(readOnly = false)
+	@Transactional
 	public ReserveInfo insertReservationInfo(ReserveInfo reserveInfo) throws Exception {
 
 		int reservationInfoId = reserveDao.insertReservationInfo(reserveInfo);

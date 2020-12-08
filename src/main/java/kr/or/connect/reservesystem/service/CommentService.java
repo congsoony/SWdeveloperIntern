@@ -9,5 +9,6 @@ public interface CommentService {
 	public List<Comment> getCommentLimitList(int displayInfoId);
 	public double getCommentAverage(int displayInfoId);
 	public int getCommentTotalCount(int displayInfoId);
+	public int insertUserComment(Comment userComment);
 	
 }

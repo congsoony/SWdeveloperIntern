@@ -47,6 +47,12 @@ public class CommentServiceImpl implements CommentService {
 	public int getCommentTotalCount(int displayInfoId) {
 		return commentDao.getCommentTotalCount(displayInfoId);
 	}
+	
+	@Override
+	@Transactional
+	public int insertUserComment(Comment userComment) {
+		return commentDao.insertUserComment(userComment);
+	}
 
 	private String makeEmailSecurity(String email) {
 		String id = email.split("@")[0];
