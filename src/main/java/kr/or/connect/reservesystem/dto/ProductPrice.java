@@ -1,6 +1,6 @@
 package kr.or.connect.reservesystem.dto;
 
-import kr.or.connect.reservesystem.config.enums.RenameType;
+import kr.or.connect.reservesystem.enums.RenameType;
 
 public class ProductPrice {
 
