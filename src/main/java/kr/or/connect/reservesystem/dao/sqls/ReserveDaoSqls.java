@@ -16,6 +16,7 @@ public class ReserveDaoSqls {
 	public static final String SELECT_BY_EMAIL_ID="select display_info.tel as display_info_tel,"
 			+ "reservation_info.id as reservation_info_id,place_name,reservation_info.display_info_id as display_info_id,"
 			+ "reservation_info.cancel_flag as cancel_flag, "
+			+ "reservation_info.product_id as product_id, "
 			+ "DATE_FORMAT(reservation_info.reservation_date, '%Y.%c.%e') as reservation_date, "
 			+ "DATE_FORMAT(DATE_ADD(reservation_info.reservation_date,INTERVAL 3 DAY), '%Y.%c.%e') as until_date,"
 			+ "CASE WHEN cancel_flag =TRUE THEN FALSE ELSE (CASE WHEN DATE_ADD(reservation_info.reservation_date,INTERVAL 3 DAY)<now() THEN TRUE ELSE FALSE END) END AS used,"

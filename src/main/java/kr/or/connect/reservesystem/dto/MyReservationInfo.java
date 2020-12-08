@@ -19,6 +19,7 @@ public class MyReservationInfo {
 	private int untilDay;
 	private List<ProductPrice> productPriceList;
 	private String displayInfoTel;
+	private int productId;
 
 	public int getReservationInfoId() {
 		return reservationInfoId;
@@ -148,6 +149,14 @@ public class MyReservationInfo {
 		this.displayInfoTel = displayInfoTel;
 	}
 
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
 	@Override
 	public String toString() {
 		return "MyReservationInfo [reservationInfoId=" + reservationInfoId + ", placeName=" + placeName
@@ -155,7 +164,8 @@ public class MyReservationInfo {
 				+ reservationDate + ", reservationEmail=" + reservationEmail + ", reservationTel=" + reservationTel
 				+ ", reservationName=" + reservationName + ", totalPrice=" + totalPrice + ", description=" + description
 				+ ", used=" + used + ", untilDate=" + untilDate + ", startDay=" + startDay + ", untilDay=" + untilDay
-				+ ", productPriceList=" + productPriceList + ", displayInfoTel=" + displayInfoTel + "]";
+				+ ", productPriceList=" + productPriceList + ", displayInfoTel=" + displayInfoTel + ", productId="
+				+ productId + "]";
 	}
 
 }
