@@ -48,4 +48,7 @@ public class CommentDaoSqls {
 			+ "JOIN reservation_user_comment ON reservation_info.id=reservation_user_comment.reservation_info_id "
 			+ "WHERE display_info.id=:displayInfoId";
 	
+	public static final String INSERT_RESERVATION_USER_COMMENT="INSERT INTO reservation_user_comment"
+			+ "(product_id, reservation_info_id, score, comment, create_date,modify_date) "
+			+ "VALUES(:productId,reservationInfoId,:score,:comment,NOW(),NOW())";
 }
