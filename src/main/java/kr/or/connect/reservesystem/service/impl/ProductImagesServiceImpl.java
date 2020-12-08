@@ -18,8 +18,8 @@ public class ProductImagesServiceImpl implements ProductImagesService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<ProductImages> getProductImagesList(int displayInfoId,String type) {
-		return productImagesDao.getProductImagesList(displayInfoId,type);
+	public List<ProductImages> getProductImagesList(int displayInfoId, String type) {
+		return productImagesDao.getProductImagesList(displayInfoId, type);
 	}
 
 }

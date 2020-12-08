@@ -53,7 +53,7 @@ public class CommentServiceImpl implements CommentService {
 		if (id.length() > 4) {
 			id = id.substring(0, 4);
 		} else {
-			id = id.substring(0,id.length()/2);
+			id = id.substring(0, id.length() / 2);
 		}
 		return id + "****";
 	}
