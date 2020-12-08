@@ -63,7 +63,7 @@
 						</span>
 						<span class="left_space">(단, 리뷰 포인트는 ID 당 1일 최대 5건까지 지급됩니다.)</span>
 					</a>
-					<textarea cols="30" rows="10" class="review_textarea" maxlength="10" id="review_textarea"></textarea>
+					<textarea cols="30" rows="10" class="review_textarea" maxlength="400" id="review_textarea"></textarea>
 				</div>
 				<!-- //리뷰 입력 -->
 
