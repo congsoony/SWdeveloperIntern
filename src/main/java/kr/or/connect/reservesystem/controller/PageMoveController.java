@@ -35,4 +35,9 @@ public class PageMoveController {
 	public String moveMyReservation() {
 		return "myreservation";
 	}
+	
+	@RequestMapping(path = "/reviewWrite", method = RequestMethod.GET)
+	public String moveReviewWrite() {
+		return "reviewWrite";
+	}
 }
