@@ -1,4 +1,4 @@
-package kr.or.connect.reservesystem.config.enums;
+package kr.or.connect.reservesystem.enums;
 
 public enum RenameType {
 	A("성인"), Y("청소년"), B("유아"), S("셋트"), D("장애인"), C("지역주민"), E("어얼리버드"), V("VIP"), R("R석");
