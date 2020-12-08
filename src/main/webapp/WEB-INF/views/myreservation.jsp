@@ -138,7 +138,7 @@
 		<!--// 취소 팝업 -->
 		
 		<script type="rv-template" id="confirmed_script_template">
-			<article class="card_item">
+			<article class="card_item" data-reservationInfoId={{reservationInfoId}} data-productId={{productId}}>
 				<a class="link_booking_details">
 					<div class="card_body">
 						<div class="left"></div>
@@ -198,7 +198,7 @@
 			</article>
 		</script>
 		<script type="rv-template" id="used_script_template">
-			<article class="card_item">
+			<article class="card_item" data-reservationInfoId={{reservationInfoId}} data-productId={{productId}}>
 				<a class="link_booking_details">
 					<div class="card_body">
 						<div class="left"></div>
@@ -255,7 +255,7 @@
 			</article>
 		</script>
 		<script type="rv-template" id="cancel_script_template">
-			<article class="card_item">
+			<article class="card_item" data-reservationInfoId={{reservationInfoId}} data-productId={{productId}}>
 				<a class="link_booking_details">
 					<div class="card_body">
 						<div class="left"></div>
