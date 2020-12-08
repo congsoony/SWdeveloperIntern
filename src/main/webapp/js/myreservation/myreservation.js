@@ -37,6 +37,7 @@ MyReservation.prototype={
         getData(url, this.showMyList);
     },
     setAllData:function(jsonObj){
+
         this.dataObj=jsonObj;
         this.dataObj.forEach((item) => {
             item.totalPrice=item.totalPrice.toLocaleString();//1000단위 콤마
@@ -82,11 +83,11 @@ MyReservation.prototype={
         if(this.cancelList.length>0){
             this.cardCancelLiTag.style.display="block";
         }
-        
     },
 
     moveReviewPage(event){
-        location.href="reviewWrite?reservationInfoId="+event.currentTarget.dataset.reservationinfoid;
+        let article=event.currentTarget.closest("article");
+        location.href="reviewWrite?reservationInfoId="+article.dataset.reservationinfoid+"&productId="+article.dataset.productid;
     },
 
     showMyList : function(jsonObj){
