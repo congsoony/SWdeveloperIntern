@@ -35,11 +35,8 @@ function postData(url, data) {
 			if (xhr.status === 200 || xhr.status === 201) {
 				alert("예약완료");
 				location.href=xhr.responseText;
-			} else if(xhr.status === 400|| xhr.status===500){
-				alert("잘못된 경로를 탐색하였습니다. 올바른 값을 입력해주세요");
-				location.href="mainpage";
 			} else if(xhr.status === 403){
-				alert("권한을 가지고 있지않습니다.");
+				alert("잘못된 정보를 엑세스 하려하고있습니다.");
 			} else if(xhr.status === 404){
 				alert("없는 리소스입니다.");
 			} else {
@@ -80,15 +77,13 @@ function putData(url) {
 						alert("잘못된 오류가 발생했습니다. 다시 시도해주세요");
 						location.href="myreservation";
 					}
-				} else if(xhr.status === 400|| xhr.status===500){
-					alert("잘못된 경로를 탐색하였습니다. 올바른 값을 입력해주세요");
-					location.href="mainpage";
-				} else if(xhr.status === 403){
+				}
+				else if(xhr.status === 403){
 					alert("권한을 가지고 있지않습니다.");
-				} else if(xhr.status === 404){
-					alert("없는 리소스입니다.");
+					location.href="mainpage";
 				} else {
 					alert("서버를 요청할수가 없습니다.");
+					location.href="mainpage";
 				}
 			}
 		}

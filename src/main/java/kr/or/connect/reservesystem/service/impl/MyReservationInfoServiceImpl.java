@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.connect.reservesystem.dao.BookingLoginDao;
 import kr.or.connect.reservesystem.dao.MyReservationInfoDao;
 import kr.or.connect.reservesystem.dao.ProductPriceDao;
 import kr.or.connect.reservesystem.dto.MyReservationInfo;
 import kr.or.connect.reservesystem.dto.ProductPrice;
 import kr.or.connect.reservesystem.service.MyReservationInfoService;
-import kr.or.connect.reservesystem.service.ProductPriceService;
 
 @Service
 public class MyReservationInfoServiceImpl implements MyReservationInfoService {
@@ -20,6 +20,8 @@ public class MyReservationInfoServiceImpl implements MyReservationInfoService {
 	private MyReservationInfoDao myReservationInfoDao;
 	@Autowired
 	private ProductPriceDao productPriceDao;
+	@Autowired
+	private BookingLoginDao bookingLoginDao;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -35,11 +37,17 @@ public class MyReservationInfoServiceImpl implements MyReservationInfoService {
 
 	@Override
 	@Transactional
-	public int updateReservationInfoCancel(int reservationInfoId) throws Exception {
-		int update=myReservationInfoDao.updateReservationInfoCancel(reservationInfoId);
-		if(update<0) {
+	public int updateReservationInfoCancel(int reservationInfoId, String email) throws Exception {
+		boolean existEmail = bookingLoginDao.existEmailId(email);
+		if (existEmail == false) {
+			throw new RuntimeException();
+		}
+
+		int update = myReservationInfoDao.updateReservationInfoCancel(reservationInfoId);
+		if (update < 0) {
 			throw new Exception();
 		}
+
 		return update;
 	}
 

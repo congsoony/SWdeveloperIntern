@@ -178,7 +178,7 @@ MyReservation.prototype={
         this.cardCancelLiTag.style.display="block";
         this.cardCancelLiTag.appendChild(article);
 
-        putData("api/myreservation?reservationInfoId="+reservationInfoId);
+        putData("api/myreservation?reservationInfoId="+reservationInfoId+"&email="+this.email);
         
         let expectCountTag=document.getElementById("reservation_expect_count");
         let num=parseInt(expectCountTag.innerText);

@@ -22,19 +22,23 @@ import kr.or.connect.reservesystem.service.MyReservationInfoService;
 public class MyReservationController {
 	@Autowired
 	private MyReservationInfoService myReservationInfoService;
+
 	@GetMapping
 	public ResponseEntity<Object> getMyReservationInfoList(@RequestParam String email) {
-		List<?> list=myReservationInfoService.getMyReservations(email);
+		List<?> list = myReservationInfoService.getMyReservations(email);
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
+
 	@PutMapping
-	public ResponseEntity<Object> reservationInfoCancel(@RequestParam int reservationInfoId) throws Exception{
+	public ResponseEntity<Object> reservationInfoCancel(@RequestParam int reservationInfoId, @RequestParam String email)
+			throws Exception {
 		try {
-			myReservationInfoService.updateReservationInfoCancel(reservationInfoId);
-			return new ResponseEntity<>("true",HttpStatus.OK);
-		} catch(Exception e) {
-			return new ResponseEntity<>("false",HttpStatus.OK);
-			
+			myReservationInfoService.updateReservationInfoCancel(reservationInfoId, email);
+			return new ResponseEntity<>("true", HttpStatus.OK);
+		} catch (RuntimeException e) {
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+		} catch (Exception e) {
+			return new ResponseEntity<>("false", HttpStatus.OK);
 		}
 	}
 }
