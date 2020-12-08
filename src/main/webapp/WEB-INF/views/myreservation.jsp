@@ -240,7 +240,7 @@
 									</em>
 								</div>
 								<div class="booking_cancel">
-									<a><button class="btn" id="review_btn" data-reservationInfoId={{reservationInfoId}}><span>예매자 리뷰 남기기</span></button></a>
+									<a><button class="btn" id="review_btn" data-reservationInfoId={{reservationInfoId}} onclick="myReserveObj.moveReviewPage(event);"><span>예매자 리뷰 남기기</span></button></a>
 								</div>
 							</div>
 						</div>
