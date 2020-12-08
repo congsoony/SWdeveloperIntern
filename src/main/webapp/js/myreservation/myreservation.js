@@ -81,11 +81,12 @@ MyReservation.prototype={
         }
         if(this.cancelList.length>0){
             this.cardCancelLiTag.style.display="block";
-        }     
-        document.getElementById("review_btn").addEventListener('click',(evt)=>{
-            //pjt6에서 작성할것
-            
-        });
+        }
+        
+    },
+
+    moveReviewPage(event){
+        location.href="reviewWrite?reservationInfoId="+event.currentTarget.dataset.reservationinfoid;
     },
 
     showMyList : function(jsonObj){
