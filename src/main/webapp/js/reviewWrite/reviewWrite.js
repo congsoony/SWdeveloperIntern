@@ -1,7 +1,10 @@
 let reviewWriteObj = null;
 document.addEventListener("DOMContentLoaded",()=> {
+    let url = "api/reviewWrite?displayInfoId="+getParameterByName("displayInfoId");
+
     goToTopEventListener();
     reviewWriteObj = new reviewWrite();
+    getData(url,reviewWriteObj.setDataObj);
     reviewWriteObj.hasCookie();
     reviewWriteObj.setEventListener();
     
@@ -14,6 +17,7 @@ function reviewWrite(){
     this.starList = document.getElementById("star_rating").querySelectorAll("input");
     this.typingLengthNode = document.getElementById("typing_length");
     this.textAreaNode = document.getElementById("review_textarea");
+    this.dataObj=null;
 }
 
 
@@ -60,15 +64,20 @@ reviewWrite.prototype={
                 alert("5자이상 댓글을 남겨주시기 바랍니다.")
                 return;
             }
+            
             let data={
                 score:starScore,
                 comment:this.textAreaNode.value,
                 reservationInfoId:getParameterByName("reservationInfoId"),
-                productId:1
+                productId:this.dataObj.productId
             };
             postData("api/reviewWrite/onlyComment",data);
         })
-    }
+    },
 
+    setDataObj(jsonObj){
+        reviewWriteObj.dataObj=jsonObj;
+        document.getElementById("title").innerText=jsonObj.productDescription;
+    }
 
 }

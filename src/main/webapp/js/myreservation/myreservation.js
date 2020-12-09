@@ -87,7 +87,7 @@ MyReservation.prototype={
 
     moveReviewPage(event){
         let article=event.currentTarget.closest("article");
-        location.href="reviewWrite?reservationInfoId="+article.dataset.reservationinfoid+"&productId="+article.dataset.productid;
+        location.href="reviewWrite?reservationInfoId="+article.dataset.reservationinfoid+"&displayInfoId="+article.dataset.displayinfoid;
     },
 
     showMyList : function(jsonObj){

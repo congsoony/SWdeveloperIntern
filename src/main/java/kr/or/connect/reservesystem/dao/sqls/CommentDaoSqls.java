@@ -50,5 +50,5 @@ public class CommentDaoSqls {
 	
 	public static final String INSERT_RESERVATION_USER_COMMENT="INSERT INTO reservation_user_comment"
 			+ "(product_id, reservation_info_id, score, comment, create_date,modify_date) "
-			+ "VALUES(:productId,reservationInfoId,:score,:comment,NOW(),NOW())";
+			+ "VALUES(:productId,:reservationInfoId,:score,:comment,NOW(),NOW())";
 }
